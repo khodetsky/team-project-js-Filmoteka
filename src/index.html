@@ -3,12 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <title>Filmoteka</title>
+    <!-- Шрифти -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- CSS стилі -->
+    <link rel="stylesheet" href="./sass/main.scss" />
+    <!-- Фавікон -->
+    <link rel="icon" href="/favicon.ico"/>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <header>
+      <!-- Тут буде паршел для хедера -->
+    </header>
+    <main>
+      <!-- Сюди рендереться розмітка карточок популярних фільмів -->
+      <ul class="popular-films-list"></ul>
+      <div>
+        <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
+      </div>
+    </main>
+    <footer>
+      <!-- Тут потрібен паршел з розміткою футера -->
+    </footer>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
