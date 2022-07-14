@@ -1,0 +1,8 @@
+$breakpoints: (
+    'mobile': (min-width: 320px,
+    ),
+    'tablet': (min-width: 768px,
+    ),
+    'desctop': (min-width: 1280px,
+    ),
+    ) !default;
