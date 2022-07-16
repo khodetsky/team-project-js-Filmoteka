@@ -1,9 +1,10 @@
 // Нормалізатор, перемінні
 @import '../sass/utilities/variables';
-@import '../sass/utilities/breackpoints';
+@import '../sass/utilities/breakpoints';
 @import '../sass/utilities/normalize';
 @import '../sass/utilities/reset';
 // Стилі блоків сторінок
 @import '../sass/layouts/base';
 
 @import '../sass/block/_header-home.scss';
+@import '../sass/block/gallery-home';
