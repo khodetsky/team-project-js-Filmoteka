@@ -30,14 +30,28 @@
         display: flex;
 
         margin-bottom: 32px;
-        width: calc(100% / 2 - 32px);
-
+        
         &:nth-last-child(-n + 2) {
             margin-bottom: 0;
         }
     }
 
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 336px;
+        
+        &:nth-child(2n + 1) {
+            margin-right: 32px;
+        }
+    }
+
     @media screen and (min-width: 1280px) {
-        width: calc(100% / 3 - 32px);
+        margin-right: 16px;
+        width: 394px;
+        &:nth-child(3n + 3) {
+            margin-right: 0;
+        }
+        &:last-child {
+            margin-right: 411px;
+        }
     } 
 }
