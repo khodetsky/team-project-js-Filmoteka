@@ -161,11 +161,11 @@
 
 @media screen and (min-width: 1280px) {
     .header {
-        background-image: url(../images/index/index_desctop_1x.jpg);
+        background-image: url(../images/index/index_desktop_1x.jpg);
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
-            background-image: url(../images/index/index_desctop_2x.jpg);
+            background-image: url(../images/index/index_desktop_2x.jpg);
         }
         background-repeat: no-repeat;
         background-size: cover;
