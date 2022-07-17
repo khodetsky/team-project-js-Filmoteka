@@ -1,0 +1,1 @@
+{"mappings":"oeAEAA,EAAA,S","sources":["src/index.js"],"sourcesContent":["// Основний файл першої сторінки. Сюди будуть імпортуватися окремі функції з ./js/index\n// Додавайте ці окремі файли саме у ту папку і експортуйте сюди.\nimport './js/preloader';\nimport './js/spinner';\n"],"names":["parcelRequire"],"version":3,"file":"index.2624f9c5.js.map"}
