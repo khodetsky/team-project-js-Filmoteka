@@ -9,7 +9,13 @@
         <table class="modal__data--table">
           <tr>
             <th>Vote / Votes</th>
-            <td><span class="vote">0</span>/<span>0</span></td>
+            <td>
+              <span class="modal__data--element modal__data--element--orange"
+                >0</span
+              >
+              /
+              <span class="modal__data--element">0</span>
+            </td>
           </tr>
           <tr>
             <th>Popularity</th>
@@ -49,7 +55,7 @@
             </p>
           </div>
           <div class="modal__data--add">
-            <button class="btn__standart btn__standart--active" type="button">
+            <button class="btn__standart btn__standart--orange" type="button">
               add to watched
             </button>
             <button class="btn__standart" type="button">add to queue</button>
@@ -57,8 +63,8 @@
         </div>
       </div>
       <button class="modal__btn--close" type="button">
-        <svg width="30px" height="30px">
-          <use href="images/icons-sprite.svg#arrow-right"></use>
+        <svg>
+          <use href="images/icons-sprite.svg#close"></use>
         </svg>
       </button>
     </div>

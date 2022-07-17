@@ -31,23 +31,30 @@
   background-color: $background-white;
   box-sizing: border-box;
   border-radius: 5px;
-  // transition:  250ms cubic-bezier(0.4, 0, 0.2, 1);
-  // &:hover,
-  // &:focus {
-  //   background-color: $button-orange;
-  //   color: $text-white;
-  //   border: 0 ;
-  // }
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: $button-orange;
+    color: $text-white;
+    border-color: $button-orange;
+    cursor: pointer;
+  }
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   @media screen and (min-width: 768px) {
     padding: 12px 0;
   }
-  &--active {
+  &--orange {
     background-color: $button-orange;
     color: $text-white;
     border: 0;
+    &:hover,
+    &:focus {
+      background-color: $background-white;
+      color: $text-black;
+      border: 1px solid $text-black;
+    }
   }
 }
 
@@ -71,7 +78,6 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   background-color: $background-white;
-  color: $text-black;
 
   &__data {
     padding-top: 40px;
@@ -131,7 +137,7 @@
       line-height: 16px;
       th {
         width: 40%;
-        color: #8c8c8c;
+        color: $modal-text-grey;
       }
       td {
         width: 60%;
@@ -155,19 +161,45 @@
         padding-left: 8px;
       }
     }
+    &--element {
+      min-width: 36px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #f7f7f7;
+      &--orange {
+        background-color: $button-orange;
+        color: $text-white;
+      }
+    }
   }
   &__btn {
     &--close {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       position: absolute;
       top: 8px;
       right: 8px;
+      padding: 0;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
       background-color: $background-white;
+      border-radius: 50%;
       border: 0;
+      &:hover,
+      &:focus {
+        background-color: $button-orange;
+      }
+      svg {
+        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        stroke: $text-black;
+        &:hover,
+        &:focus {
+          stroke: $text-white;
+        }
+      }
     }
   }
 }
