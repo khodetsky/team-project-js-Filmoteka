@@ -1,0 +1,42 @@
+.gallery-home {
+   display: grid;
+   grid-template-columns: repeat(3,33%);
+   grid-gap: 15px;
+   max-width: 1250px;
+   justify-content: center;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 20px;
+   margin-bottom: 5px
+}
+
+.gallery-item {
+   height: 65%;
+   width: 100%;
+   object-fit: cover;
+   border-radius: 5px;
+   transition: transform cubic-bezier(0.4, 0, 0.4, 1) 500ms;
+   &:hover {
+      transform: scale(1.04);
+   }
+}
+
+.card__img {
+   width: 394px;
+   height: 574px;
+   background-color: grey;
+}
+
+.card-div__text {
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 1.2;
+   color: #FF6B08;
+}
+
+.card-div__span {
+   color: black;
+   margin-top: 12px;
+}
