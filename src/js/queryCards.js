@@ -2,7 +2,7 @@ import { fetchQueryMovies, resetPage, page } from './queryFetch';
 import { createMovieCards } from './queryMarkup';
 import { target, spinner } from './spinner.js';
 
-const gallery = document.querySelector('.gallery-home');
+const gallery = document.querySelector('.gallery');
 const formSearch = document.querySelector('#search-form');
 
 formSearch.addEventListener('submit', submitMoviesSearch);

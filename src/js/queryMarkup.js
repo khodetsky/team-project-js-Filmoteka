@@ -11,24 +11,19 @@ export const createMovieCards = (movies) => {
       const year = release_date ? release_date.slice(0, 4) : "";
       const separator = movieGenresList && year ? ' | ' : "";
 
-      acc += `<li class="card__item">
-  <a href="#">
-    <img
-      class="card__img"
-      src="https://image.tmdb.org/t/p/w500/${poster_path}"
-      alt="poster"
-    />
-    <div class="card-div">
-      <p class="card-div__text">
-        <span class="card-div__span">${original_title}</span
-        ><br />${movieGenresList} ${separator} ${year}
-      </p>
-      <div class="card-div__div">
-        <p class="card-div__raiting">${vote_average}</p>
-      </div>
-    </div>
-  </a>
-</li>`
+      acc += `
+      <li class="card">
+        <a href="#">
+         <img class="card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster" />
+         <p class="card__title">${original_title}</p>
+         <div class="card__text-container">
+           <p class="card__text">${movieGenresList} ${separator} ${year}</p>
+           <div class="card__rating-box" id="card-rating">
+             <p class="card__rating-text">${vote_average}</p>
+           </div>
+         </div>
+        </a>
+      </li>`
       return acc;
    }, '')
 }

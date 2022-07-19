@@ -1,64 +1,48 @@
-.card__img {
-    margin-bottom: 10px;
-}
+.gallery {
+    max-width: 320px;
+    padding-top: 20px;
+    padding-bottom: 40px;
 
-.card__span {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(14 / 12);
-    text-transform: uppercase;
-    color: #000000;
-}
-
-.card__text {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16 / 12);
-    color: #FF6B08;
-}
-
-.card-div__span {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(14 / 12);
-    text-transform: uppercase;
-    color: #000000;
-}
-
-.card-div__text {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16 / 12);
-    color: #FF6B08;
-}
-
-.gallery-home {
     @media screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
-        margin: -16px;
+        justify-content: space-between;
+
+        max-width: 768px;
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 
-        @media screen and (min-width: 1280px) {
-            margin: -8px;
-        }
+    @media screen and (min-width: 1280px) {
+        max-width: 1280px;
+    }
 }
 
-.card__item {
+.card {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(16 / 12);
+
+    @media screen and (max-width: 767px) {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
     @media screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: calc(20 / 16);
+
         margin: 16px;
         flex-basis: calc((100% - 64px) / 2);
     }
 
     @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: calc(24 / 20);
+
         margin: 8px;
         flex-basis: calc((100% - 48px) / 3);
         &:nth-child(n + 4) {
@@ -66,51 +50,58 @@
         }
     }
 
-    @media screen and (max-width: 767px) {
-        &:not(:last-child) {
-            margin-bottom: 20px;
+    &__text-container{
+        display: flex;
+        align-items: center;
+    }
+
+    &__text {
+        color: $text-orange;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        color: $text-black;
+    }
+
+    &__rating-text {
+        color: $text-white;
+    }
+
+    &__img {
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 280px;
+        height: 402px;
+
+        @media screen and (min-width: 768px) {
+            width: 336px;
+            height: 455px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            width: 395px;
+            height: 574px;
+        }
+    }
+
+    &__rating-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: $button-orange;
+
+        min-width: 36px;
+        min-height: 16px;
+        padding: 1px 8px;
+        border-radius: 5px;
+        margin-left: 8px;
+
+        @media screen and (min-width: 1280px) {
+            min-width: 40px;
+            min-height: 20px;
         }
     }
 }
 
-.card__img {
-    width: 280px;
-    height: 402px;
-
-    @media screen and (min-width: 768px) {
-        width: 336px;
-        height: 455px;
-    }
-
-    @media screen and (min-width: 1280px) {
-        width: 395px;
-        height: 574px;
-    }
-}
-
-.card-div {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.card-div__div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FF6B01;
-    width: 40px;
-    height: 20px;
-    border-radius: 5px;
-    margin-left: 8px;
-}
-
-.card-div__raiting {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-}

@@ -9,8 +9,10 @@
   transition-property: opacity, visibility;
   transition-duration: 500ms;
   transition-timing-function: linear;
-  .hidden .modal {
-    transform: translate(-50%, -50%) scale(0.5);
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
