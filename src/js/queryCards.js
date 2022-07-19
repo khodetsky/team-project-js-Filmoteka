@@ -1,5 +1,5 @@
 import { fetchQueryMovies, resetPage, page } from './queryFetch';
-import { createMovieCards } from './queryMarkup';
+import { createMovieCards, addRatingColor } from './queryMarkup';
 import { target, spinner } from './spinner.js';
 
 const gallery = document.querySelector('.gallery');
@@ -27,6 +27,7 @@ async function submitMoviesSearch(e) {
          return console.log('NOTIFICATION => No query results');  // Поставити Нотіфікашку
       }
       gallery.innerHTML = createMovieCards(movies);
+      addRatingColor();
    })
    formSearch.reset();
    setTimeout(() => spinner.stop(), 400);

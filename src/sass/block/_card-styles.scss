@@ -6,7 +6,6 @@
     @media screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
 
         max-width: 768px;
         padding-top: 60px;
@@ -90,7 +89,7 @@
         align-items: center;
         justify-content: center;
 
-        background-color: $button-orange;
+        // background-color: $button-orange;
 
         min-width: 36px;
         min-height: 16px;
@@ -105,3 +104,20 @@
     }
 }
 
+// Класи з кольорами для рейтингу
+
+.red-box {
+    background-color: #FF0101;
+}
+
+.orange-box {
+    background-color: $button-orange;
+}
+
+.yellow-box {
+background-color: #FCD50B;
+}
+
+.green-box{
+   background-color: #05FF00;
+}
