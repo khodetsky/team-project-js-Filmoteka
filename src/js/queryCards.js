@@ -21,14 +21,12 @@ async function submitMoviesSearch(e) {
    if (searchMovie === '') {
       spinner.stop();
       textError.classList.remove('is-hidden');
-      return console.log('No matches found for your query. Enter the correct movie name.');
    }
    
    await fetchQueryMovies(searchMovie).then(({ movies }) => {
       if (movies.length === 0) {
          spinner.stop();
          textError.classList.remove('is-hidden');
-         return console.log('The search result is unsuccessful. Enter the correct movie title');  // Поставити Нотіфікашку
       }
       gallery.innerHTML = createMovieCards(movies);
    })
