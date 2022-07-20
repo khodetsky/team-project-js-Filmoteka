@@ -30,6 +30,8 @@ async function submitMoviesSearch(e) {
       }
       gallery.innerHTML = createMovieCards(movies);
       addRatingColor();
+      const moviesStr = JSON.stringify(movies);
+      localStorage.setItem("moviesInMain", moviesStr);
    })
    formSearch.reset();
    setTimeout(() => spinner.stop(), 400);
