@@ -4,4 +4,6 @@ import './js/preloader';
 import './js/spinner';
 import './js/queryFetch';
 import './js/queryCards';
-import './js/queryMarkup'; 
+import './js/queryMarkup';
+import './js/modal-close';
+import './js/modal-open';
