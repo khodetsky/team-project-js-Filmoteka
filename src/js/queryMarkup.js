@@ -7,7 +7,7 @@ export const createMovieCards = (movies) => {
 
       const isImg = `<img class="card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" loading="lazy" alt="Poster for film ${original_title}" data-id="${id}"/>`;
 
-      const noImg = `<img class="card__img" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" loading="lazy" alt="No poster available" data-id="${id}"/>`
+      const noImg = `<img class="card__img" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" loading="lazy" alt="No poster available"/>`
 
       const resultImg = poster_path ? isImg : noImg;
 
@@ -21,7 +21,7 @@ export const createMovieCards = (movies) => {
       const separator = movieGenresList && year ? ' | ' : "";
 
       acc += `
-      <li class="card">
+      <li class="card"  data-id="${id}">
         <a href="#">
          ${resultImg}
          <p class="card__title">${original_title}</p>
