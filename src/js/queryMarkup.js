@@ -3,7 +3,16 @@ import { genres } from './genres.json';
 
 
 export const createMovieCards = (movies) => {
-   return movies.reduce((acc, { poster_path, original_title, release_date, genre_ids, vote_average }) => {
+   return movies.reduce((acc, { poster_path, original_title, release_date, genre_ids, vote_average, id }) => {
+
+      const isImg = `<img class="card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" loading="lazy" alt="Poster for film ${original_title}" data-id="${id}"/>`;
+
+      const noImg = `<img class="card__img" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" loading="lazy" alt="No poster available" data-id="${id}"/>`
+
+      const resultImg = poster_path ? isImg : noImg;
+
+      
+
 
       const movieGenresList = genre_ids.length > 0
          ? getMovieGenresList(genre_ids).join(', ')
@@ -14,7 +23,7 @@ export const createMovieCards = (movies) => {
       acc += `
       <li class="card">
         <a href="#">
-         <img class="card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster" />
+         ${resultImg}
          <p class="card__title">${original_title}</p>
          <div class="card__text-container">
            <p class="card__text">${movieGenresList} ${separator} ${year}</p>

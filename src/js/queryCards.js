@@ -29,6 +29,8 @@ async function submitMoviesSearch(e) {
          textError.classList.remove('is-hidden');
       }
       gallery.innerHTML = createMovieCards(movies);
+      const moviesStr = JSON.stringify(movies);
+      localStorage.setItem("moviesInMain", moviesStr);
    })
    formSearch.reset();
    setTimeout(() => spinner.stop(), 400);
