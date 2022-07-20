@@ -1,5 +1,5 @@
 import { fetchQueryMovies, resetPage, page } from './queryFetch';
-import { createMovieCards } from './queryMarkup';
+import { createMovieCards, addRatingColor } from './queryMarkup';
 import { target, spinner } from './spinner.js';
 
 const gallery = document.querySelector('.gallery');
@@ -29,6 +29,7 @@ async function submitMoviesSearch(e) {
          textError.classList.remove('is-hidden');
       }
       gallery.innerHTML = createMovieCards(movies);
+      addRatingColor();
       const moviesStr = JSON.stringify(movies);
       localStorage.setItem("moviesInMain", moviesStr);
    })
