@@ -12,6 +12,15 @@ export async function getMovies(rules, pgNum, queryString) {
     }
 }
 
+export async function getGenres() {
+    try {
+        const resp = await getMovie(GET_MOVIES_RULES.genres);
+        return resp.data.genres;
+    } catch (error) {
+        
+    }
+}
+
 function getMovie(rules, pgCurrent, queryString) {
     // const API_TOKEN_v4 = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjgyYTIyYWU2NjVmNWYxN2EzMmEwNzcwMTNkMjQzYyIsInN1YiI6IjYyZDA4MTA1NmQ5ZmU4MDk0NDJhMjliOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2nF_t43BUCf_perKaDjWwMGkDKQg8Nc1YsaBHf5n2ZY';
     const API_KEY = 'b282a22ae665f5f17a32a077013d243c';
@@ -44,15 +53,6 @@ function getMovie(rules, pgCurrent, queryString) {
 //     search: 'search',
 // };
 
-
-// export async function getGenres() {
-//     try {
-//         const resp = await getMovie(GET_MOVIES_RULES.genres);
-//         return resp.data.genres;
-//     } catch (error) {
-        
-//     }
-// }
 
 // export async function getTrends(pgNum) {
 //     try {
