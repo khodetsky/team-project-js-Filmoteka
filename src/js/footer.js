@@ -26,7 +26,7 @@ function onEscKeyPress(e) {
 
 function onBackdropClick(e) {
    //если ли класс или по типу єлемента
-    if (e.target.classList.contains('backdrop')) {
+    if (e.target.classList.contains('footer-backdrop')) {
         onModalToggle();
         removeEventListener();
     }
