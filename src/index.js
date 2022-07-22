@@ -6,6 +6,8 @@ import './js/ratingColor';
 import './js/modal-close';
 import './js/modal-open';
 
+import './js/footer';
+
 import { getGenres, getMovies } from "./js/getMovies";
 import { drawGallery } from "./js/drawGallery";
 import { drawPagination } from "./js/drawPagination";
