@@ -96,7 +96,7 @@ function onGalleryClk(e) {
 //  ===|     function CALLING_A_MODAL_WINDOW_BY_CLICK_ON_A_MOVIE_IN_THE_GALLERY () {}   |====
     
     // Add movie to local storage - used from modal windoow
-    addMovieToStorage('queue', movie);
+    addMovieToStorage('watched', movie);
 };
 
 /* = */
