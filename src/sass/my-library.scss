@@ -1,0 +1,17 @@
+// Нормалізатор, перемінні
+@import '../sass/utilities/variables';
+@import '../sass/utilities/breakpoints';
+@import '../sass/utilities/normalize';
+@import '../sass/utilities/reset';
+@import '../sass/utilities/spinner';
+// Стилі блоків сторінок
+@import '../sass/layouts/base';
+
+@import './block/library-header';
+@import './block/gallery';
+@import './block/pagination';
+
+// 
+
+// 
+
