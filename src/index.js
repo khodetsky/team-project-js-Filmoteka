@@ -107,10 +107,6 @@ function onPgNumClk(e) {
 
     const targetPageNum = e.target.closest('[data-page]').dataset.page;
 
-    // if (!targetPageNum) {
-    //     return;
-    // }
-
     const movies = JSON.parse(localStorage.getItem(MOVIES_KEY))
 
     const currentPageNum = movies.page;
