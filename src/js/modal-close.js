@@ -24,15 +24,16 @@ function closeModalEscape(e) {
 }
 // закриття модалки кліком поза модалкою
 function closeModalClick(e) {
-  console.log('закриття модалки кліком поза межами модалки');
   const onClickElement = e.target;
   const modalWindow = onClickElement.closest('.modal');
   if (!backdrop.classList.contains('hidden') & (modalWindow == null)) {
+    console.log('закриття модалки кліком поза межами модалки');
     modalHidden();
   }
 }
 // зняття слухачів
 function removeListener() {
+  console.log('зняття слухачів для закриття модалки');
   btnClose.removeEventListener('click', closeModalBtn);
   document.removeEventListener('keyup', closeModalEscape);
   document.removeEventListener('click', closeModalClick);

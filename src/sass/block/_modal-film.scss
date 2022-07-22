@@ -148,10 +148,12 @@
     }
     &--text {
       max-height: 236px;
+      min-height: 236px;
       overflow: auto;
       margin-bottom: 20px;
       @media screen and (min-width: 1280px) {
         max-height: 160px;
+        min-height: 160px;
       }
     }
     &--add {
