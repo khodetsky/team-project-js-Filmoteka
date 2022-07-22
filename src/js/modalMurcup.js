@@ -13,7 +13,7 @@ export function addModalMcp(movie) {
               <th>Vote / Votes</th>
               <td>
                 <span class="modal__data--element modal__data--element--orange"
-                  >${movie.vote_average}</span
+                  >${movie.vote_average.toFixed(1)}</span
                 >
                 /
                 <span class="modal__data--element">${movie.vote_count}</span>

@@ -23,19 +23,18 @@ function createCardMarkup ({poster_path, genre_ids, title, release_date, vote_av
     // vote_average - vote (number)
 
     return `
-    <li class="gallery__item" data-movie="${movieNumber}">
+    <li class="card" data-movie="${movieNumber}">
         <a class="gallery__link">
-            <div class="img__wrap">
-                <img class="gallery__img" src="${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}">
+            <img class="card__img" src="${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}">
+            <p class="card__title">${title}</p>
+            <div class="card__text-container">
+                <p class="card__text">${createListOfGenres(genre_ids)} | ${release_date ? release_date.slice(0, 4) : ''}</p>
+                <div class="card__rating-box" id="card-rating">
+                    <p class="card__rating-text">${vote_average.toFixed(1)}</p>
+                </div>
             </div>
-            <p class="gallery__info">
-                <span class="gallery__info--title">${title}</span>
-                <span class="galery__info--text">${createListOfGenres(genre_ids)} | ${release_date ? release_date.slice(0, 4) : ''}</span>
-                <span class="gallery__info--vote">${vote_average.toFixed(1)}</span>
-            </p>
         </a>
-    </li>
-    `;
+    </li>`;
 }
 
 export function createListOfGenres(genre_ids) {

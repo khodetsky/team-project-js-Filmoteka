@@ -92,7 +92,7 @@ function onFormSubmit(e) {
 }
 /* = */
 function onGalleryClk(e) {
-    const movieNumberEl = e.target.closest('.gallery__item');
+    const movieNumberEl = e.target.closest('.card');
     // console.log(e.target);
     // console.log(movieNumberEl);
     
