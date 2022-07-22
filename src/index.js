@@ -11,6 +11,7 @@ import { drawGallery } from "./js/drawGallery";
 import { drawPagination } from "./js/drawPagination";
 import { calcNewPgNum } from "./js/calcNewPgNum";
 import { showErrorMsg, hideErrorMsg } from "./js/errorMessage";
+import { target, spinner } from './js/spinner.js';
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
@@ -72,13 +73,18 @@ function isNoMovies(movies) {
 }
 /* = */
 function onFormSubmit(e) {
-    e.preventDefault();
+   e.preventDefault();
+   spinner.spin(target);
     const searchString = e.target.elements.input.value;
     console.log('search: ', searchString);
 
-    if (!searchString) { return };
+   if (!searchString) {
+      spinner.stop();
+      return
+   };
 
     reDrawMovies(GET_MOVIES_RULES.search, 1, searchString)
+    setTimeout(() => spinner.stop(), 400);
 }
 /* = */
 function onGalleryClk(e) {
