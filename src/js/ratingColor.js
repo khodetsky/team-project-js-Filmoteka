@@ -1,14 +1,14 @@
 export async function addRatingColor() {
-   const cardRatingBox = document.querySelectorAll('.card__rating-text');
+   const cardRatingBox = document.querySelectorAll('.gallery__info--vote');
    for (box of cardRatingBox) {
       if (box.textContent < 3) {
-         box.closest('#card-rating').classList.add('red-box')
+         box.closest('.gallery__info--vote').classList.add('red-box')
       } else if (box.textContent >= 3 && box.textContent < 5) {
-         box.closest('#card-rating').classList.add('orange-box')
+         box.closest('.gallery__info--vote').classList.add('orange-box')
       } else if (box.textContent >= 5 && box.textContent < 7) {
-         box.closest('#card-rating').classList.add('yellow-box')
+         box.closest('.gallery__info--vote').classList.add('yellow-box')
       } else {
-         box.closest('#card-rating').classList.add('green-box')
+         box.closest('.gallery__info--vote').classList.add('green-box')
       }
    }
 }

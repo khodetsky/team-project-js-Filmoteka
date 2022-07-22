@@ -38,7 +38,7 @@ function createCardMarkup ({poster_path, genre_ids, title, release_date, vote_av
     `;
 }
 
-function createListOfGenres(genre_ids) {
+export function createListOfGenres(genre_ids) {
 
     // create Array of Genres Names form Array of Genres Ids 
     const genresNames = genre_ids.map(getGenresNames);
@@ -53,7 +53,7 @@ function createListOfGenres(genre_ids) {
     };
 }
 
-function getGenresNames(genreId) {
+export function getGenresNames(genreId) {
     // get All Genres Names from Local Storage 
     const genresAll = JSON.parse(localStorage.getItem('genres'));
 

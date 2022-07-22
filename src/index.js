@@ -12,11 +12,14 @@ import { drawPagination } from "./js/drawPagination";
 import { calcNewPgNum } from "./js/calcNewPgNum";
 import { showErrorMsg, hideErrorMsg } from "./js/errorMessage";
 import { target, spinner } from './js/spinner.js';
+import { addModalMcp } from './js/modalMurcup';
+import {addRatingColor} from './js/ratingColor'
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
 const pageNumRef = document.querySelector('#page-numbers');
 const formRef = document.querySelector('.form');
+const modalMcpContainer = document.querySelector('.modal__data--content')
 
 const MOVIES_PER_PAGE = 20;
 // 
@@ -66,6 +69,7 @@ async function reDrawMovies(rules, pgNum, queryString) {
     await galleryRef.addEventListener('click', onGalleryClk);
 
     await window.scrollTo(0, 0);
+    await addRatingColor();
 };
 /* Check for an empty list of movies */
 function isNoMovies(movies) {
@@ -91,11 +95,12 @@ function onGalleryClk(e) {
     const movieNumberEl = e.target.closest('.gallery__item');
     // console.log(e.target);
     // console.log(movieNumberEl);
+    
     console.log(`%c${movieNumberEl.dataset.movie}`, 'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
 
     const movie = JSON.parse(localStorage.getItem(MOVIES_KEY))
         .results[movieNumberEl.dataset.movie];
-    
+    modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie)) ;
     // console.log(movieNumberEl.dataset.movie);
     // console.log(movie);
 

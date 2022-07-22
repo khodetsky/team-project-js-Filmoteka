@@ -60,7 +60,7 @@
 
 // стилі модального вікна
 .modal {
-  max-width: calc(100% - 40px);
+  max-width: 280px;
   max-height: calc(100% - 40px);
   width: 100%;
   // pointer-events: none;
@@ -80,6 +80,12 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   background-color: $background-white;
+
+  &__data--content {
+    @media screen and (min-width: 768px) {
+        display: flex;
+    } 
+  }
 
   &__data {
     padding-top: 40px;
@@ -210,3 +216,4 @@
     }
   }
 }
+

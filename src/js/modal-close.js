@@ -1,10 +1,12 @@
 const btnClose = document.querySelector('.modal__btn--close');
 const modal = document.querySelector('.modal');
 const backdrop = document.querySelector('.backdrop');
+const modalMcpContainer = document.querySelector('.modal__data--content')
 
 function modalHidden() {
   backdrop.classList.add('hidden');
   removeListener();
+  modalMcpContainer.innerHTML = "";
 }
 // закриття модалки кнопкою
 function closeModalBtn() {
