@@ -1,11 +1,15 @@
 import axios from "axios";
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
+const GET_MOVIES_RULES = {
+    genres: 'genres',
+    trends: 'trends',
+    search: 'search',
+};
 
 export async function getMovies(rules, pgNum, queryString) {
     try {
         const resp = await getMovie(rules, pgNum, queryString);
-        await console.log(resp.data);
         return resp.data;
     } catch (error) {
         return resp.status_message;
@@ -15,6 +19,7 @@ export async function getMovies(rules, pgNum, queryString) {
 export async function getGenres() {
     try {
         const resp = await getMovie(GET_MOVIES_RULES.genres);
+        console.log(resp.data);
         return resp.data.genres;
     } catch (error) {
         
