@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My library</title>
     <!-- Шрифти -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- CSS стилі -->
-    <link rel="stylesheet" href="./sass/main.scss" />
+    <link rel="stylesheet" href="./sass/my-library.scss" />
     <!-- Фавікон -->
     <link rel="icon" href="/favicon.ico" />
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <!-- Тут буде паршел для хедера -->
+      <!-- Тут буде паршел для хедера -->
+      <include src="./partials/library-header.html"></include>
     </header>
-    <main>
+
+    <main class="main">
+      <div class="container">
         <!-- Сюди рендереться розмітка карточок популярних фільмів -->
-        <ul class="popular-films-list"></ul>
-        <div>
-            <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
-        </div>
+        <ul id="gallery" class="gallery"></ul>
+
+        <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
+        <include src="./partials/pagination.html"></include>
+      </div>
     </main>
+
     <footer>
-        <!-- Тут потрібен паршел з розміткою футера -->
+      <!-- Тут потрібен паршел з розміткою футера -->
     </footer>
     <script type="module" src="./my-library.js"></script>
-</body>
+  </body>
 </html>

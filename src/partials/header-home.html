@@ -21,7 +21,8 @@
       </nav>
     </div>
     <div class="header__center">
-      <form class="header__form" id="search-form">
+      <!-- Попередня форма  -->
+      <!-- <form class="header__form" id="search-form">
         <input
           type="text"
           name="searchQuery"
@@ -31,6 +32,16 @@
         <svg class="header__form-icon" width="12" height="12">
           <use href="./images/icons-sprite.svg#search"></use>
         </svg>
+      </form> -->
+
+      <!-- Поточна форма -->
+      <form id="form" class="form">
+        <input
+          id="input"
+          type="text"
+          class="form__input"
+          placeholder="Movie search"
+        /><button id="search" type="submit" class="form__btn-submit"></button>
       </form>
     </div>
     <p class="header__text-error is-hidden">

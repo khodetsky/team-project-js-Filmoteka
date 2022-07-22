@@ -20,13 +20,13 @@
       <!-- Тут буде паршел для хедера -->
       <include src="./partials/header-home.html"></include>
     </header>
-    <main>
+    <main class="main">
       <div class="container">
         <!-- Сюди рендереться розмітка карточок популярних фільмів -->
-        <ul class="gallery"></ul>
-        <div>
-          <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
-        </div>
+        <ul id="gallery" class="gallery"></ul>
+
+        <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
+        <include src="./partials/pagination.html"></include>
       </div>
     </main>
     <footer>
