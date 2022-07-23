@@ -2,9 +2,12 @@
 // Додавайте ці окремі файли саме у ту папку і експортуйте сюди.
 import './js/preloader';
 import './js/spinner';
+import './js/changeTheme';
 import './js/ratingColor';
 import './js/modal-close';
 import './js/modal-open';
+
+import './js/footer';
 
 import { getGenres, getMovies } from "./js/getMovies";
 import { drawGallery } from "./js/drawGallery";
@@ -95,8 +98,9 @@ function onGalleryClk(e) {
     const movieNumberEl = e.target.closest('.card');
     // console.log(e.target);
     // console.log(movieNumberEl);
-    
-    console.log(`%c${movieNumberEl.dataset.movie}`, 'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
+
+    console.log(`%c${movieNumberEl.dataset.movie}`,
+        'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
 
     const movie = JSON.parse(localStorage.getItem(MOVIES_KEY))
         .results[movieNumberEl.dataset.movie];
@@ -107,7 +111,7 @@ function onGalleryClk(e) {
 //  ===|     function CALLING_A_MODAL_WINDOW_BY_CLICK_ON_A_MOVIE_IN_THE_GALLERY () {}   |====
     
     // Add movie to local storage - used from modal windoow
-    addMovieToStorage('queue', movie);
+    addMovieToStorage('watched', movie);
 };
 
 /* = */
