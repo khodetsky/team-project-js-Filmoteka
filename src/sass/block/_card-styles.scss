@@ -113,18 +113,18 @@
 
 // Класи з кольорами для рейтингу
 
-.red-box {
-    background-color: #FF0101;
+.card__rating-poor {
+    background-color: var(--add-color);
 }
 
-.orange-box {
-    background-color: $button-orange;
+.card__rating-low {
+    background-color: var(--accent-color);
 }
 
-.yellow-box {
-    background-color: #FCD50B;
+.card__rating-medium {
+    background-color: var(--yellow-color);
 }
 
-.green-box {
-    background-color: #05FF00;
+.card__rating-high {
+    background-color: var(--green-color);
 }

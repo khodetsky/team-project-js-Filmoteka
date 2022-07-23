@@ -3,7 +3,6 @@
 import './js/preloader';
 import './js/spinner';
 import './js/changeTheme';
-import './js/ratingColor';
 import './js/modal-close';
 import './js/modal-open';
 
@@ -16,7 +15,6 @@ import { calcNewPgNum } from "./js/calcNewPgNum";
 import { showErrorMsg, hideErrorMsg } from "./js/errorMessage";
 import { target, spinner } from './js/spinner.js';
 import { addModalMcp } from './js/modalMurcup';
-import {addRatingColor} from './js/ratingColor'
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
@@ -72,7 +70,6 @@ async function reDrawMovies(rules, pgNum, queryString) {
     await galleryRef.addEventListener('click', onGalleryClk);
 
     await window.scrollTo(0, 0);
-    await addRatingColor();
 };
 /* Check for an empty list of movies */
 function isNoMovies(movies) {
