@@ -26,19 +26,28 @@ function createCardMarkup ({poster_path, genre_ids, title, release_date, vote_av
 
     const imageToDraw = poster_path ? `${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}` : NO_IMG;
     
+    const voteColor = changeVoteBoxColor(vote_average);
+    
     return `
     <li class="card" data-movie="${movieNumber}">
         <a class="gallery__link">
-            <img class="card__img" src="${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}">
+            <img class="card__img" src="${imageToDraw}">
             <p class="card__title">${title}</p>
             <div class="card__text-container">
                 <p class="card__text">${createListOfGenres(genre_ids)} | ${release_date ? release_date.slice(0, 4) : ''}</p>
-                <div class="card__rating-box" id="card-rating">
+                <div class="card__rating-box ${voteColor}" id="card-rating">
                     <p class="card__rating-text">${vote_average.toFixed(1)}</p>
                 </div>
             </div>
         </a>
     </li>`;
+}
+
+function changeVoteBoxColor(vote) {
+    if (vote < 3) return 'card__rating-poor';
+    if (vote < 5) return 'card__rating-low';
+    if (vote < 7) return 'card__rating-medium';
+    return 'card__rating-high';
 }
 
 export function createListOfGenres(genre_ids) {
