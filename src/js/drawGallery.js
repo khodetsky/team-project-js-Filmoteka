@@ -22,11 +22,15 @@ function createCardMarkup ({poster_path, genre_ids, title, release_date, vote_av
     // release_date - date (string) in format 'YYYY-MM-DD'
     // vote_average - vote (number)
 
+    const NO_IMG = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
+
+    const imageToDraw = poster_path ? `${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}` : NO_IMG;
+    
     return `
     <li class="gallery__item" data-movie="${movieNumber}">
         <a class="gallery__link">
             <div class="img__wrap">
-                <img class="gallery__img" src="${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}">
+                <img class="gallery__img" src="${imageToDraw}">
             </div>
             <p class="gallery__info">
                 <span class="gallery__info--title">${title}</span>
