@@ -56,6 +56,13 @@
 
     &__text {
         color: $text-orange;
+        font-size: 11px;
+        @media screen and (min-width: 768px) {
+            font-size: 13px;
+        }
+        @media screen and (min-width: 1280px) {
+            font-size: 16px;
+        }
     }
 
     &__title {
@@ -115,9 +122,9 @@
 }
 
 .yellow-box {
-background-color: #FCD50B;
+    background-color: #FCD50B;
 }
 
-.green-box{
-   background-color: #05FF00;
+.green-box {
+    background-color: #05FF00;
 }

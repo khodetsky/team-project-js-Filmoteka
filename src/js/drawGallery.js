@@ -27,22 +27,21 @@ function createCardMarkup ({poster_path, genre_ids, title, release_date, vote_av
     const imageToDraw = poster_path ? `${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}` : NO_IMG;
     
     return `
-    <li class="gallery__item" data-movie="${movieNumber}">
+    <li class="card" data-movie="${movieNumber}">
         <a class="gallery__link">
-            <div class="img__wrap">
-                <img class="gallery__img" src="${imageToDraw}">
+            <img class="card__img" src="${IMG_BASE_URL}${IMG_FILE_SIZE}${poster_path}">
+            <p class="card__title">${title}</p>
+            <div class="card__text-container">
+                <p class="card__text">${createListOfGenres(genre_ids)} | ${release_date ? release_date.slice(0, 4) : ''}</p>
+                <div class="card__rating-box" id="card-rating">
+                    <p class="card__rating-text">${vote_average.toFixed(1)}</p>
+                </div>
             </div>
-            <p class="gallery__info">
-                <span class="gallery__info--title">${title}</span>
-                <span class="galery__info--text">${createListOfGenres(genre_ids)} | ${release_date ? release_date.slice(0, 4) : ''}</span>
-                <span class="gallery__info--vote">${vote_average.toFixed(1)}</span>
-            </p>
         </a>
-    </li>
-    `;
+    </li>`;
 }
 
-function createListOfGenres(genre_ids) {
+export function createListOfGenres(genre_ids) {
 
     // create Array of Genres Names form Array of Genres Ids 
     const genresNames = genre_ids.map(getGenresNames);
@@ -57,7 +56,7 @@ function createListOfGenres(genre_ids) {
     };
 }
 
-function getGenresNames(genreId) {
+export function getGenresNames(genreId) {
     // get All Genres Names from Local Storage 
     const genresAll = JSON.parse(localStorage.getItem('genres'));
 
