@@ -1,15 +1,28 @@
-.gallery {
-    max-width: 320px;
+.main {
     padding-top: 20px;
     padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.gallery {
+    max-width: 320px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 
     @media screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
 
         max-width: 768px;
-        padding-top: 60px;
-        padding-bottom: 60px;
+        // padding-top: 60px;
+        // padding-bottom: 60px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -67,7 +80,7 @@
 
     &__title {
         text-transform: uppercase;
-        color: $text-black;
+        // color: $text-black;
     }
 
     &__rating-text {

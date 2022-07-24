@@ -3,18 +3,6 @@
   color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .theme {
   position: sticky;
   margin-right: 8px;
@@ -53,8 +41,7 @@
   }
   @media screen and (min-width: 1366px) {
     position: sticky;
-    margin-right: 9px;
-    margin-left: 9px;
+    margin: 9px;
     width: 50px;
     height: 50px;
     top: 45px;
@@ -83,8 +70,7 @@
   &__btn--dark {
     background-color: transparent;
     @media screen and (min-width: 350px) {
-   background-color: transparent;
-    transform: rotate(28deg);
+      background-color: transparent;
     }
   }
   &__icon-sun {
