@@ -1,0 +1,90 @@
+.filter {
+    &__form-group {
+        position: sticky;
+        top: 15px;
+        right: 19px;
+        margin-right: 8px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__dropdown {
+        position: relative;
+        width: 200px;
+    }
+
+    &__dropdown-button {
+        cursor: pointer;
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: left;
+        color: #000000c2;
+        border: 1px solid #000000c2;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: transparent;
+    }
+
+    &__dropdown-button::after {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        content: '';
+        width: 0;
+        height: 0;
+        border-width: 10.4px 10px 0 10px;
+        border-color: #000000c2 transparent transparent transparent;
+        border-style: solid;
+    }
+
+    &__dropdown-list {
+        z-index: 40;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 30px;
+        width: 100%;
+        background-color: #ff6b08c3;
+        box-shadow: 0 4px 8px rgba(176, 198, 255, 0.6);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    &__visible {
+        display: block;
+    }
+
+    &__dropdown-item {
+        border: 1px solid #7E9BBD;
+        padding: 7px 10px;
+        border-bottom: 0;
+        color: #000000c2;
+        cursor: pointer;
+    }
+
+    &__dropdown-item:first-child {
+        border-radius: 6px 6px 0 0;
+    }
+
+    &__dropdown-item:last-child {
+        border-radius: 0 0 6px 6px;
+        border-bottom: 1px solid #7E9BBD;
+    }
+
+    &__dropdown-item:hover {
+        color: #4d4d4d;
+        background-color: #f9b98f;
+    }
+}
+
+.filter__dropdown-button:focus,
+.filter__dropdown-button-active {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(176, 198, 255, 0.6);
+    border: 1px solid #7E9BBD;
+    background-color: #ff6b08c3;
+}

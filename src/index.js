@@ -5,6 +5,7 @@ import './js/spinner';
 import './js/changeTheme';
 import './js/modal-close';
 import './js/modal-open';
+import './js/filter';
 
 import './js/footer';
 
