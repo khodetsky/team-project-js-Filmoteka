@@ -178,6 +178,9 @@
         background-color: $button-orange;
         color: $text-white;
       }
+      &--white {
+        color: black;
+      }
     }
   }
   &__btn {
