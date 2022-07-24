@@ -2,11 +2,12 @@
 // Додавайте ці окремі файли саме у ту папку і експортуйте сюди.
 import './js/preloader';
 import './js/spinner';
-import './js/changeTheme';
+
 import './js/modal-close';
 import './js/modal-open';
 
 import './js/footer';
+import './js/changeTheme';
 
 import { getGenres, getMovies } from "./js/getMovies";
 import { drawGallery } from "./js/drawGallery";
