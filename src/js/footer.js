@@ -1,10 +1,10 @@
-// import { teamMembers } from "./teamMembers";
+import { teamMembers } from "./teamMembers";
 
 const refs = {
     footerBtnLinkText: document.querySelector('[data-modal-open]'),
     backdrop: document.querySelector('[data-modal]'),
     modalBtnClose: document.querySelector('[data-modal-close'),
-    // teamMarkup: document.querySelector('.team'),
+    teamMarkup: document.querySelector('.team'),
 }
 
 refs.footerBtnLinkText.addEventListener('click', onFooterBtnClick);
@@ -51,18 +51,18 @@ function onFooterCloseBtnClick() {
 
 //шаблоний рядок для рендеру картки мембера***
 
-// const galleryMarkup = createMemberItem(teamMembers);
+const galleryMarkup = createMemberItem(teamMembers);
 
-// refs.teamMarkup.insertAdjacentHTML('beforeend', galleryMarkup);
+refs.teamMarkup.insertAdjacentHTML('beforeend', galleryMarkup);
 
-// function createMemberItem(members) {
-//     return members.map(({ name, img, position }) => {
-//         return `<li class="team__item">
-//     <img class="team__img" src="${img}">
-//     <p class="team__name">${name}</p>
-//     <p class="team__position">${position}</p>
-//     </li>`;  
-//     }).join('');
-// }
+function createMemberItem(members) {
+    return members.map(({ name, img, position }) => {
+        return `<li class="team__item">
+    <img class="team__img" src="${img}">
+    <p class="team__name">${name}</p>
+    <p class="team__position">${position}</p>
+    </li>`;  
+    }).join('');
+}
 
 /////***** */
