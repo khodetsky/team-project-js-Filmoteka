@@ -15,7 +15,7 @@ import { drawPagination } from "./js/drawPagination";
 import { calcNewPgNum } from "./js/calcNewPgNum";
 import { showErrorMsg, hideErrorMsg } from "./js/errorMessage";
 import { target, spinner } from './js/spinner.js';
-import { addModalMcp } from './js/modalMurcup';
+import { addModalMcp } from './js/modalMarkup';
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');

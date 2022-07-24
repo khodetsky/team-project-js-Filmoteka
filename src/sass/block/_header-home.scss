@@ -10,13 +10,14 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        padding: 40px 0 44px 0;
+        padding-top: 40px;
+        height: 230px;
 
         &__top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 54px;
+            // margin-bottom: 54px;
         }
         &__logo {
             display: flex;
@@ -128,9 +129,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        height: 216px;
 
         &__top {
-            margin-bottom: 46px;
+            // margin-bottom: 46px;
         }
 
         &__logo-icon {
