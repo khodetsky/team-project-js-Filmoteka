@@ -1,6 +1,7 @@
 import './js/changeThemeLibrary';
 // Основний файл сторінки My library. Сюди будуть імпортуватися окремі функції з ./js/my-library
 // Додавайте ці окремі файли саме у ту папку і експортуйте сюди.
+import './js/footer';
 
 import { drawGallery } from "./js/drawGallery";
 import { drawPagination } from "./js/drawPagination";
