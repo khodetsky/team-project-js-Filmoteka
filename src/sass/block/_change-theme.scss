@@ -4,13 +4,13 @@
 }
 
 .theme {
-  position: sticky;
-  margin-right: 8px;
-  margin-left: 9px;
+  // position: sticky;
+  // margin-right: 8px;
+  // margin-left: 9px;
   width: 14px;
   height: 14px;
-  top: 45px;
-  right: 19px;
+  // top: 45px;
+  // right: 19px;
   display: flex;
   margin-left: auto;
   border-radius: 50%;
@@ -19,7 +19,7 @@
     height: 20px;
   }
   @media screen and (min-width: 1366px) {
-    margin: 9px;
+    // margin-bottom: 90px;
     width: 50px;
     height: 50px;
     right: 0px;
@@ -58,7 +58,7 @@
   &__icon-moon {
     width: 25px;
     height: 25px;
-    fill: #000;
+    fill: #fff;
     @media screen and (min-width: 1366px) {
       width: 30px;
       height: 30px;
