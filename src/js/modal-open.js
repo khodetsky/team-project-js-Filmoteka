@@ -9,13 +9,14 @@ import {
 const gallery = document.querySelector('.gallery');
 
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
-gallery.addEventListener('click', () => {
-  // const onClickElement = e.target;
-  // const card = onClickElement.closest('');
-  modalVisible();
-  setTimeout(() => {
+gallery.addEventListener('click', (e) => {
+  if (e.target.closest('.card')) {
+    modalVisible();
+    setTimeout(() => {
     modalClose();
   }, 100);
+  }
+  
 });
 
 // робимо модалку фыльму видимою

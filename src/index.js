@@ -94,9 +94,11 @@ function onFormSubmit(e) {
 }
 /* = */
 function onGalleryClk(e) {
-    const movieNumberEl = e.target.closest('.card');
+    if (e.target.closest('.card')) {
+        const movieNumberEl = e.target.closest('.card');
     // console.log(e.target);
     // console.log(movieNumberEl);
+        console.log(e.target.closest('.card'));
 
     console.log(`%c${movieNumberEl.dataset.movie}`,
         'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
@@ -111,6 +113,7 @@ function onGalleryClk(e) {
     
     // Add movie to local storage - used from modal windoow
     addMovieToStorage('watched', movie);
+    }
 };
 
 /* = */
