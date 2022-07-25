@@ -16,26 +16,28 @@
   </head>
   <body>
     <div id="spinner"></div>
-    <header class="header">
-      <!-- Тут буде паршел для хедера -->
-      <include src="./partials/header-home.html"></include>
-    </header>
-    <main class="main">
-      <!-- <include src="./partials/filter.html"></include> -->
-      <include src="./partials/filter.html"></include>
-      <include src="./partials/change-theme.html"></include>
+    <div class="wrapper">
+      <header class="header">
+        <!-- Тут буде паршел для хедера -->
+        <include src="./partials/header-home.html"></include>
+      </header>
+      <main class="main">
+        <!-- <include src="./partials/filter.html"></include> -->
+        <include src="./partials/filter.html"></include>
+        <include src="./partials/change-theme.html"></include>
 
-      <div class="container">
-        <!-- Сюди рендереться розмітка карточок популярних фільмів -->
-        <ul id="gallery" class="gallery"></ul>
+        <div class="container">
+          <!-- Сюди рендереться розмітка карточок популярних фільмів -->
+          <ul id="gallery" class="gallery"></ul>
 
-        <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
-        <include src="./partials/pagination.html"></include>
-      </div>
-    </main>
-    <footer>
-      <include src="./partials/footer.html"></include>
-    </footer>
+          <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
+          <include src="./partials/pagination.html"></include>
+        </div>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+      </footer>
+    </div>
     <!-- Тут буде паршел для модального вікна фільму -->
     <include src="./partials/modal-film.html"></include>
     <script type="module" src="./index.js"></script>
