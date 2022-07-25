@@ -1,11 +1,14 @@
 import './js/changeThemeLibrary';
 // Основний файл сторінки My library. Сюди будуть імпортуватися окремі функції з ./js/my-library
 // Додавайте ці окремі файли саме у ту папку і експортуйте сюди.
+import './js/modal-close';
+import './js/modal-open';
 import './js/footer';
 
 import { drawGallery } from "./js/drawGallery";
 import { drawPagination } from "./js/drawPagination";
 import { calcNewPgNum } from "./js/calcNewPgNum";
+import { addModalMcp } from './js/modalMarkup';
 // 
 const queueBtnRef = document.querySelector('#queue');
 const watchedBtnRef = document.querySelector('#watched');
@@ -13,6 +16,7 @@ const buttonsRef = document.querySelector('.header__buttons');
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
 const pageNumRef = document.querySelector('#page-numbers');
+const modalMcpContainer = document.querySelector('.modal__data--content');
 // 
 const MOVIES_PER_PAGE = 20;
 const LOCAL_MOVIES_KEY = 'localMovies';
@@ -88,10 +92,17 @@ function onBtnClk(e) {
 
 
 function onGalleryClk(e) {
-    const movieNumberEl = e.target.closest('.gallery__item');
+    if (e.target.closest('.card')) {
+        const movieNumberEl = e.target.closest('.card');
     // console.log(e.target);
     // console.log(movieNumberEl);
     console.log(`%c${movieNumberEl.dataset.movie}`, 'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
+    
+    const movie = JSON.parse(localStorage.getItem(LOCAL_MOVIES_KEY))
+        .results[movieNumberEl.dataset.movie];
+    modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie)) ;
+    }
+    
 };
 
 function onPgNumClk(e) {
