@@ -89,7 +89,7 @@ function onFormSubmit(e) {
       return
    };
 
-    reDrawMovies(GET_MOVIES_RULES.search, 1, searchString)
+    reDrawMovies(GET_MOVIES_RULES.search, 1, searchString);
     setTimeout(() => spinner.stop(), 400);
 }
 /* = */
@@ -165,4 +165,33 @@ function isMovieInStorage(storageKey, movieId) {
     return storageMovies.results.find(movie => movie.id === movieId)
         ? true
         : false;
+}
+
+console.log('начло');
+const openDropBtn = document.querySelector('.filter__dropdown-button');
+const dropList = document.querySelector('.filter__dropdown-list');
+// const genreItem = document.querySelectorAll('.filter__dropdown-item');
+
+//    Клик по кнопке открыть/закрыть
+openDropBtn.addEventListener('click', function () {
+    
+    if (dropList.classList.contains('vidno')) {
+        dropList.classList.remove('vidno');
+        console.log('класса нет');
+    } else {
+        // dropList.classList.add('visible');
+        dropList.classList.add('vidno');
+        // dropList.classList.add('filter__visible');
+        document.addEventListener('click', onDropListClick);
+        console.log('класс есть');
+  }
+});
+
+function onDropListClick(e) {
+    // document.removeEventListener('click', onDropListClick);
+    // dropList.classList.remove('visible');
+    console.log('нажали на список');
+     if (e.target.closest === dropList) {
+                reDrawMovies('filter', 1, e.target.dataset.value);
+            } 
 }

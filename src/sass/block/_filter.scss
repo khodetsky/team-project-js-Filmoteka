@@ -1,13 +1,8 @@
 .filter {
     &__form-group {
-        position: sticky;
-        top: 15px;
-        right: 19px;
-        margin-right: 8px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: flex-end;
+        position: absolute;
+        bottom: -32px;
+        left: 0px;
     }
 
     &__dropdown {
@@ -21,8 +16,8 @@
         display: block;
         width: 100%;
         text-align: left;
-        color: #000000c2;
-        border: 1px solid #000000c2;
+        color: $text-white;
+        border: 1px solid $text-white;
         border-radius: 5px;
         padding: 5px 10px;
         background-color: transparent;
@@ -37,7 +32,7 @@
         width: 0;
         height: 0;
         border-width: 10.4px 10px 0 10px;
-        border-color: #000000c2 transparent transparent transparent;
+        border-color: $text-white transparent transparent transparent;
         border-style: solid;
     }
 
@@ -48,15 +43,13 @@
         left: 0;
         top: 30px;
         width: 100%;
-        background-color: #ff6b08c3;
+        background-color: #aaa39eda;
         box-shadow: 0 4px 8px rgba(176, 198, 255, 0.6);
         border-radius: 5px;
         overflow: hidden;
     }
 
-    &__visible {
-        display: block;
-    }
+    
 
     &__dropdown-item {
         border: 1px solid #7E9BBD;
@@ -76,7 +69,7 @@
     }
 
     &__dropdown-item:hover {
-        color: #4d4d4d;
+        color: #000000;
         background-color: #f9b98f;
     }
 }
@@ -86,5 +79,26 @@
     outline: none;
     box-shadow: 0 4px 8px rgba(176, 198, 255, 0.6);
     border: 1px solid #7E9BBD;
-    background-color: #ff6b08c3;
+    background-color: #aaa39eda;
 }
+
+.vidno {
+    display: block;
+}
+
+
+// .list-test {
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+
+// .card-test {
+//     border: 1px solid #000000;
+//     padding: 20px;
+//     width: 200px;
+//     margin: 5px;
+// }
+
+// .hide-test {
+//     display: none;
+// }

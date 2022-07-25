@@ -9,7 +9,11 @@
     background-size: cover;
     background-position: center;
     padding-top: 40px;
-    height: 230px;;
+    height: 230px;
+    
+    &__inner {
+        position: relative;
+    }
 
     &__top {
         display: flex;

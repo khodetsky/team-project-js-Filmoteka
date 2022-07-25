@@ -74,3 +74,4 @@ export function getGenresNames(genreId) {
         .find(genre => genre.id === genreId)
         .name;
 }
+
