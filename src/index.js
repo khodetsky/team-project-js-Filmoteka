@@ -6,6 +6,7 @@ import './js/spinner';
 import './js/modal-close';
 import './js/modal-open';
 import './js/filter';
+import './js/index/signInBtn'
 
 import './js/footer';
 import './js/changeTheme';
