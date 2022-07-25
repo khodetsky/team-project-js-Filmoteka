@@ -5,6 +5,7 @@ const GET_MOVIES_RULES = {
     genres: 'genres',
     trends: 'trends',
     search: 'search',
+    filter: 'filter',
 };
 
 export async function getMovies(rules, pgNum, queryString) {
@@ -33,6 +34,7 @@ function getMovie(rules, pgCurrent, queryString) {
         genres: '/genre/movie/list',
         trends: '/trending/movie/day',
         search: '/search/movie',
+        filter: '/discover/movie',
     };
 
     const configAxios = {
@@ -43,12 +45,21 @@ function getMovie(rules, pgCurrent, queryString) {
                 },
     };
 
-    if (pgCurrent) { configAxios.params.page = pgCurrent };
-    if (queryString) { configAxios.params.query = queryString };
+    // 
+    if (GET_MOVIES_RULES[rules] === 'filter') {
+        configAxios.params.sort_by = 'popularity.desc';
+        configAxios.params.with_genres = queryString;
+    } else {
+        if (pgCurrent) { configAxios.params.page = pgCurrent };
+        if (queryString) { configAxios.params.query = queryString };
+    };
 
     const resp = axios.get(GET_RULES[rules], configAxios);
     return resp;
 };
+// sort_by: 'popularity.desc'
+// with_genres: string
+// (Comma separated value of genre ids that you want to include in the results)
 
 /* ============================================================================== */
 
