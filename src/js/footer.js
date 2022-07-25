@@ -7,6 +7,8 @@ const refs = {
     teamMarkup: document.querySelector('.team'),
 }
 
+const body = document.querySelector('body');
+
 refs.footerBtnLinkText.addEventListener('click', onFooterBtnClick);
 
 function onFooterBtnClick(e) {
@@ -15,6 +17,8 @@ function onFooterBtnClick(e) {
     refs.modalBtnClose.addEventListener('click', onFooterCloseBtnClick);
     refs.backdrop.addEventListener('click', onBackdropClick);
     onModalToggle();
+    body.style.overflow = 'hidden';
+
 }
 
 function onEscKeyPress(e) {
@@ -40,6 +44,8 @@ function removeEventListener() {
     window.removeEventListener('keydown', onEscKeyPress);
     refs.modalBtnClose.removeEventListener('click', onFooterCloseBtnClick);
     refs.backdrop.removeEventListener('click', onBackdropClick);
+    body.style.overflow = '';
+
 }
 // console.log(teamMembers);
 
