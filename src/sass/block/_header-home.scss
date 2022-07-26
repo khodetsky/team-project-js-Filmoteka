@@ -9,7 +9,13 @@
     background-size: cover;
     background-position: center;
     padding-top: 40px;
-    height: 230px;;
+    height: 230px;
+    // position: relative;
+
+    &__inner {
+        position: relative;
+        height: 145px;
+    }
 
     &__top {
         display: flex;
@@ -44,6 +50,14 @@
         line-height: 1.16;
         text-transform: uppercase;
         color: $text-white;
+        border-radius: 3px;
+    }
+
+    &__link--noCurrent {
+        &:hover {
+            box-shadow: 0 0 10px 5px #ff6b08;
+            transition: box-shadow 0.25s linear;
+        }
     }
 
     &__link--current {
@@ -127,8 +141,8 @@
         background-position: center;
         height: 216px;
 
-        &__top {
-            // margin-bottom: 46px;
+        &__inner {
+            height: 130px;
         }
 
         &__logo-icon {
@@ -160,10 +174,12 @@
 @media screen and (min-width: 1280px) {
     .header {
         background-image: url(../images/index/index_desktop_1x.jpg);
+        
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
             background-image: url(../images/index/index_desktop_2x.jpg);
+            
         }
         background-repeat: no-repeat;
         background-size: cover;

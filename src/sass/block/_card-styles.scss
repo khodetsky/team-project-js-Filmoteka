@@ -37,6 +37,15 @@
     font-size: 12px;
     line-height: calc(16 / 12);
 
+    transition: transform .3s;
+
+    &:hover, &:focus {
+    cursor: pointer;
+    transform: scale(1.05);
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    // border-radius: 4px;
+        }
+
     @media screen and (max-width: 767px) {
         &:not(:last-child) {
             margin-bottom: 20px;
@@ -69,9 +78,10 @@
 
     &__text {
         color: $text-orange;
-        font-size: 11px;
+        font-weight: 500;
+        font-size: 12px;
         @media screen and (min-width: 768px) {
-            font-size: 13px;
+            font-size: 12px;
         }
         @media screen and (min-width: 1280px) {
             font-size: 16px;
@@ -81,10 +91,28 @@
     &__title {
         text-transform: uppercase;
         // color: $text-black;
+        font-size: 12px;
+        
+            @media screen and (min-width: 768px) {
+                font-size: 12px;
+            }
+        
+            @media screen and (min-width: 1280px) {
+                font-size: 16px;
+            }
     }
 
     &__rating-text {
         color: $text-white;
+    font-size: 12px;
+    
+        @media screen and (min-width: 768px) {
+            font-size: 12px;
+        }
+    
+        @media screen and (min-width: 1280px) {
+            font-size: 16px;
+        }
     }
 
     &__img {

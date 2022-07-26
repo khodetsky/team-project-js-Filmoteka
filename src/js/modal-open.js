@@ -7,26 +7,25 @@ import {
   backdrop,
 } from './modal-close';
 const gallery = document.querySelector('.gallery');
-
+const body = document.querySelector('body');
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
-gallery.addEventListener('click', () => {
-  // const onClickElement = e.target;
-  // const card = onClickElement.closest('');
-  modalVisible();
-  setTimeout(() => {
-    modalClose();
-  }, 100);
+gallery.addEventListener('click', e => {
+  if (e.target.closest('.card')) {
+    body.style.overflow = 'hidden';
+    modalVisible();
+    setTimeout(() => {
+      modalClose();
+    }, 100);
+  }
 });
 
 // робимо модалку фыльму видимою
 function modalVisible() {
-  console.log('відкриття модалки');
   backdrop.classList.remove('hidden');
 }
 // вішаємо слухачів для закриття модалки
 function modalClose() {
   if (!backdrop.classList.contains('hidden')) {
-    console.log('вішаємо слухачів для закриття модалки');
     btnClose.addEventListener('click', closeModalBtn);
     document.addEventListener('keyup', closeModalEscape);
     document.addEventListener('click', closeModalClick);

@@ -11,35 +11,42 @@ export const teamMembers = [
         name: 'Alexander Khodetskiy',
         position: 'Team Lead',
         img: imgUrl,
+        link: 'https://github.com/khodetsky',
     },
     {
         name: 'Ilya Milinteev',
         position: 'Scrum Master',
         img: imgUrl2,
+        link: 'https://github.com/milintey',
     },
     {
         name: 'Arkadii Zaslavskyi',
         position: 'Developer',
         img: imgUrl3,
+        link: 'https://github.com/ArkZaslavskyi',
     },
     {
         name: 'Alina Zhyva',
         position: 'Developer',
         img: imgUrl4,
+        link: 'https://github.com/azhivaya',
     },
     {
         name: 'Anna Matvieieva',
         position: 'Developer',
         img: imgUrl5,
+        link: 'https://github.com/annamatvieieva',
     },
     {
         name: 'Artem Yakushkin',
         position: 'Developer',
         img: imgUrl6,
+        link: 'https://github.com/ArtemYakushkin',
     },
     {
         name: 'Sasha Maslak',
         position: 'Developer',
         img: imgUrl7,
+        link: 'https://github.com/SashaMaslak',
     },
 ]
