@@ -26,7 +26,7 @@ function setLightTheme() {
    footer.classList.remove('dark');
    modalFooter.style.backgroundColor = "white";
    footerModalText.style.color = "#545454";
-   // modal.style.backgroundColor = "white";
+   modal.classList.remove('dark');
    currentTheme = localStorage.setItem('currentTheme', 'light');
 }
 
@@ -37,6 +37,6 @@ function setDarkTheme() {
    footer.classList.add('dark');
    modalFooter.style.backgroundColor = "#333";
    footerModalText.style.color = "white";
-   // modal.style.backgroundColor = "#333";
+   modal.classList.add('dark');
    currentTheme = localStorage.setItem('currentTheme', 'dark');
 }
