@@ -46,11 +46,12 @@ function getMovie(rules, pgCurrent, queryString) {
     };
 
     // 
+    if (pgCurrent) { configAxios.params.page = pgCurrent };
+
     if (GET_MOVIES_RULES[rules] === 'filter') {
         configAxios.params.sort_by = 'popularity.desc';
         configAxios.params.with_genres = queryString;
     } else {
-        if (pgCurrent) { configAxios.params.page = pgCurrent };
         if (queryString) { configAxios.params.query = queryString };
     };
 

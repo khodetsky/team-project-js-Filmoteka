@@ -9,7 +9,13 @@
     background-size: cover;
     background-position: center;
     padding-top: 40px;
-    height: 230px;;
+    height: 230px;
+    // position: relative;
+
+    &__inner {
+        position: relative;
+        height: 145px;
+    }
 
     &__top {
         display: flex;
@@ -135,9 +141,9 @@
         background-position: center;
         height: 216px;
 
-        // &__top {
-        //     // margin-bottom: 46px;
-        // }
+        &__inner {
+            height: 140px;
+        }
 
         &__logo-icon {
             margin-right: 8px;
