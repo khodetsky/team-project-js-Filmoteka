@@ -226,28 +226,29 @@ function isMovieInStorage(storageKey, movieId) {
 const openDropBtn = document.querySelector('.filter__dropdown-button');
 const dropList = document.querySelector('.filter__dropdown-list');
 
-//    Клик по кнопке открыть/закрыть
+// Клик за пределами списка
+document.addEventListener('click', onDropListGenresBtnClick);
+
+// Клик по кнопке открыть/закрыть
 openDropBtn.addEventListener('click', function (e) {
     
     if (dropList.classList.contains('filter__visible')) {
         dropList.classList.remove('filter__visible');
     } else {
-        openDropBtn.innerText = this.innerText;
-        openDropBtn.focus();
-        dropList.classList.remove('filter__visible');
         dropList.classList.add('filter__visible');
         dropList.addEventListener('click', onDropListClick);
     }
 });
 
 function onDropListClick(e) {
+    openDropBtn.textContent = e.target.textContent;
     reDrawMovies('filter', 1, e.target.dataset.value);
 }
 
 // Клик за пределами списка закрывает список
-document.addEventListener('click', function (e) {
-  if (e.target !== document.querySelector('.filter__dropdown-button')) {
-    dropList.classList.remove('filter__visible');
-    openDropBtn.classList.remove('filter__dropdown-button-active');
-  }
-});
+function onDropListGenresBtnClick(e) {
+    if (e.target !== openDropBtn) {
+        dropList.classList.remove('filter__visible');
+        openDropBtn.classList.remove('filter__dropdown-button-active');
+    }
+}
