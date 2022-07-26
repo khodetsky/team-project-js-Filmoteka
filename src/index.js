@@ -32,6 +32,7 @@ const GET_MOVIES_RULES = {
   genres: 'genres',
   trends: 'trends',
   search: 'search',
+  filter: 'filter',
 };
 //
 const STORAGE_KEYS = {
@@ -65,7 +66,13 @@ async function reDrawMovies(rules, pgNum, queryString) {
     showErrorMsg();
     return;
   }
-
+  
+  // очистка кнопки фильтра при смене контента 
+  const currentCondition = JSON.parse(localStorage.getItem('movies')).rules;
+  if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
+    resetFilterBtn();
+  }
+  
   await localStorage.setItem(
     MOVIES_KEY,
     JSON.stringify({ ...movies, rules, search_string: queryString })
@@ -251,4 +258,8 @@ function onDropListGenresBtnClick(e) {
         dropList.classList.remove('filter__visible');
         openDropBtn.classList.remove('filter__dropdown-button-active');
     }
+}
+
+function resetFilterBtn() {
+    openDropBtn.textContent = 'Genres';
 }
