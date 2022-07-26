@@ -2,9 +2,11 @@ const btnClose = document.querySelector('.modal__btn--close');
 const modal = document.querySelector('.modal');
 const backdrop = document.querySelector('.backdrop');
 const modalMcpContainer = document.querySelector('.modal__data--content');
+const body = document.querySelector('body');
 
 function modalHidden() {
   backdrop.classList.add('hidden');
+  body.style.overflow = '';
   removeListener();
   modalMcpContainer.innerHTML = '';
 }
