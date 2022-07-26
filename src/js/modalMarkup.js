@@ -1,10 +1,12 @@
 import { createListOfGenres } from './drawGallery';
-import { IMG_BASE_URL, IMG_FILE_SIZE } from "./basedConst";
+import { IMG_BASE_URL, IMG_FILE_SIZE } from './basedConst';
 
 export function addModalMcp(movie) {
-    return `
+  return `
         <div class="modal__data--poster">
-          <img src="${IMG_BASE_URL}${IMG_FILE_SIZE}${movie.poster_path}" alt="film" />
+          <img src="${IMG_BASE_URL}${IMG_FILE_SIZE}${
+    movie.poster_path
+  }" alt="film" />
         </div>
         <div class="modal__data--description">
           <h1 class="modal__data--title">${movie.title}</h1>
@@ -16,7 +18,9 @@ export function addModalMcp(movie) {
                   >${movie.vote_average.toFixed(1)}</span
                 >
                 /
-                <span class="modal__data--element modal__data--element--white">${movie.vote_count}</span>
+                <span class="modal__data--element modal__data--element--white">${
+                  movie.vote_count
+                }</span>
               </td>
             </tr>
             <tr>
@@ -37,18 +41,18 @@ export function addModalMcp(movie) {
             <div class="modal__data--text">
               <p>${movie.overview}</p>
             </div>
-            <div class="modal__data--add">
+          </div>
+          <div class="modal__data--add">
               <button
-                class="modal__btn btn__standart btn__standart--orange"
+              id ="addToWatched"
+                class="modal__btn btn__standart"
                 type="button"
               >
                 add to watched
               </button>
-              <button class="modal__btn btn__standart" type="button">
+              <button id="addToQueue" class="modal__btn btn__standart" type="button">
                 add to queue
               </button>
             </div>
-          </div>
-        </div>`
+        </div>`;
 }
-
