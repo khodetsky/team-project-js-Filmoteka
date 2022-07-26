@@ -5,9 +5,9 @@ import './js/modal-close';
 import './js/modal-open';
 import './js/footer';
 
-import { drawGallery } from "./js/drawGallery";
-import { drawPagination } from "./js/drawPagination";
-import { calcNewPgNum } from "./js/calcNewPgNum";
+import { drawGallery } from './js/drawGallery';
+import { drawPagination } from './js/drawPagination';
+import { calcNewPgNum } from './js/calcNewPgNum';
 import { addModalMcp } from './js/modalMarkup';
 
 const queueBtnRef = document.querySelector('#queue');
@@ -93,17 +93,33 @@ function onBtnClk(e) {
 }
 
 function onGalleryClk(e) {
-    if (e.target.closest('.card')) {
-        const movieNumberEl = e.target.closest('.card');
+  if (e.target.closest('.card')) {
+    const movieNumberEl = e.target.closest('.card');
     // console.log(e.target);
     // console.log(movieNumberEl);
-    console.log(`%c${movieNumberEl.dataset.movie}`, 'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;');
-    
-    const movie = JSON.parse(localStorage.getItem(LOCAL_MOVIES_KEY))
-        .results[movieNumberEl.dataset.movie];
-    modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie)) ;
-    }   
-};
+    console.log(
+      `%c${movieNumberEl.dataset.movie}`,
+      'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;'
+    );
+
+    const movie = JSON.parse(localStorage.getItem(LOCAL_MOVIES_KEY)).results[
+      movieNumberEl.dataset.movie
+    ];
+    modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie));
+
+    const btnToWatched = document.querySelector('#addToWatched');
+    const btnToQueue = document.querySelector('#addToQueue');
+    btnStyle('watched', movie, movie.id, btnToWatched);
+    btnStyle('queue', movie, movie.id, btnToQueue);
+
+    btnToWatched.addEventListener('click', () => {
+      addMovieToStorage('watched', movie, movie.id, btnToWatched);
+    });
+    btnToQueue.addEventListener('click', () => {
+      addMovieToStorage('queue', movie, movie.id, btnToQueue);
+    });
+  }
+}
 
 function onPgNumClk(e) {
   if (!e.target.closest('[data-page]')) {
@@ -126,6 +142,77 @@ function onPgNumClk(e) {
   const newPageNum = calcNewPgNum(currentPageNum, targetPageNum, totalPages);
 
   reDrawLocalMovies(localMovies.rules, newPageNum);
+}
+function addMovieToStorage(storageKey, movie, movieId, btn) {
+  console.log(
+    'addMovieToStorage started... storageKey: ',
+    storageKey,
+    'movie: ',
+    movie
+  );
+  console.log('STORAGE_KEYS[storageKey]: ', STORAGE_KEYS[storageKey]);
+
+  if (!isMovieInStorage(storageKey, movie.id)) {
+    let storageMovies = JSON.parse(
+      localStorage.getItem(STORAGE_KEYS[storageKey])
+    );
+    if (!storageMovies) {
+      storageMovies = {
+        results: [],
+        total_results: 0,
+        total_pages: 0,
+      };
+    }
+
+    storageMovies.results.push(movie);
+    storageMovies.total_results += 1;
+    storageMovies.total_pages = Math.ceil(
+      storageMovies.total_results / MOVIES_PER_PAGE
+    );
+
+    localStorage.setItem(
+      STORAGE_KEYS[storageKey],
+      JSON.stringify(storageMovies)
+    );
+    btn.classList.add('btn__standart--orange');
+    btn.textContent = `delete from ${storageKey}`;
+  } else {
+    let storageMovies = JSON.parse(
+      localStorage.getItem(STORAGE_KEYS[storageKey])
+    );
+    let storageMovie = storageMovies.results.find(
+      movieLS => movieLS.id === movieId
+    );
+    let movieIndex = storageMovies.results.indexOf(storageMovie);
+    storageMovies.results.splice(movieIndex, 1);
+    localStorage.setItem(
+      STORAGE_KEYS[storageKey],
+      JSON.stringify(storageMovies)
+    );
+    btn.classList.remove('btn__standart--orange');
+    btn.textContent = `add to ${storageKey}`;
+  }
+}
+
+function isMovieInStorage(storageKey, movieId) {
+  const storageMovies = JSON.parse(
+    localStorage.getItem(STORAGE_KEYS[storageKey])
+  );
+  if (!storageMovies) return false;
+
+  return storageMovies.results.find(movie => movie.id === movieId)
+    ? true
+    : false;
+}
+
+function btnStyle(storageKey, movie, movieId, btn) {
+  if (isMovieInStorage(storageKey, movie.id)) {
+    console.log('фильм добавлен в ls');
+    btn.classList.add('btn__standart--orange');
+    btn.textContent = `delete from ${storageKey}`;
+  } else {
+    console.log('фильм не добавлен в LS');
+  }
 }
 
 // GET TRENDING
