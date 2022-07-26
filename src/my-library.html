@@ -15,24 +15,26 @@
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <header>
-      <!-- Тут буде паршел для хедера -->
-      <include src="./partials/library-header.html"></include>
-    </header>
+    <div class="wrapper">
+      <header>
+        <!-- Тут буде паршел для хедера -->
+        <include src="./partials/library-header.html"></include>
+      </header>
 
-    <main class="main">
-      <div class="container">
-        <!-- Сюди рендереться розмітка карточок популярних фільмів -->
-        <ul id="gallery" class="gallery"></ul>
+      <main class="main">
+        <div class="container">
+          <!-- Сюди рендереться розмітка карточок популярних фільмів -->
+          <ul id="gallery" class="gallery"></ul>
 
-        <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
-        <include src="./partials/pagination.html"></include>
-      </div>
-    </main>
+          <!-- Сюди паршел з розміткою для кнопок з пагінацією -->
+          <include src="./partials/pagination.html"></include>
+        </div>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+      </footer>
+    </div>
 
-    <footer>
-      <include src="./partials/footer.html"></include>
-    </footer>
     <include src="./partials/modal-film.html"></include>
     <script type="module" src="./my-library.js"></script>
   </body>

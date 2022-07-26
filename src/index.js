@@ -5,6 +5,7 @@ import './js/spinner';
 
 import './js/modal-close';
 import './js/modal-open';
+import './js/filter';
 
 import './js/footer';
 import './js/changeTheme';
@@ -15,7 +16,7 @@ import { drawPagination } from './js/drawPagination';
 import { calcNewPgNum } from './js/calcNewPgNum';
 import { showErrorMsg, hideErrorMsg } from './js/errorMessage';
 import { target, spinner } from './js/spinner.js';
-import { addModalMcp } from './js/modalMurcup';
+import { addModalMcp } from './js/modalMarkup';
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
@@ -103,36 +104,36 @@ function onFormSubmit(e) {
 }
 /* = */
 function onGalleryClk(e) {
-  const movieNumberEl = e.target.closest('.card');
-  // console.log(e.target);
-  // console.log(movieNumberEl);
+    if (e.target.closest('.card')) {
+        const movieNumberEl = e.target.closest('.card');
 
-  console.log(
-    `%c${movieNumberEl.dataset.movie}`,
-    'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;'
-  );
+        console.log(
+            `%c${movieNumberEl.dataset.movie}`,
+            'color: yellow; background-color: red; display: inline-block; padding: 5px; font-weight: bold;'
+        );
 
-  const movie = JSON.parse(localStorage.getItem(MOVIES_KEY)).results[
-    movieNumberEl.dataset.movie
-  ];
-  modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie));
-  // console.log(movieNumberEl.dataset.movie);
-  // console.log(movie);
+        const movie = JSON.parse(localStorage.getItem(MOVIES_KEY)).results[
+            movieNumberEl.dataset.movie
+        ];
+        modalMcpContainer.insertAdjacentHTML('afterbegin', addModalMcp(movie));
+        // console.log(movieNumberEl.dataset.movie);
+        // console.log(movie);
 
-  //  ===|     function CALLING_A_MODAL_WINDOW_BY_CLICK_ON_A_MOVIE_IN_THE_GALLERY () {}   |====
+        //  ===|     function CALLING_A_MODAL_WINDOW_BY_CLICK_ON_A_MOVIE_IN_THE_GALLERY () {}   |====
 
-  // Add movie to local storage - used from modal windoow
-  // addMovieToStorage('watched', movie);
+        // Add movie to local storage - used from modal windoow
+        // addMovieToStorage('watched', movie);
 
-  const btnToWatched = document.querySelector('#addToWatched');
-  const btnToQueue = document.querySelector('#addToQueue');
+        const btnToWatched = document.querySelector('#addToWatched');
+        const btnToQueue = document.querySelector('#addToQueue');
 
-  btnToWatched.addEventListener('click', () => {
-    addMovieToStorage('watched', movie, movie.id, btnToWatched);
-  });
-  btnToQueue.addEventListener('click', () => {
-    addMovieToStorage('queue', movie, movie.id, btnToQueue);
-  });
+        btnToWatched.addEventListener('click', () => {
+            addMovieToStorage('watched', movie, movie.id, btnToWatched);
+        });
+        btnToQueue.addEventListener('click', () => {
+            addMovieToStorage('queue', movie, movie.id, btnToQueue);
+        });
+    }
 }
 
 /* = */
