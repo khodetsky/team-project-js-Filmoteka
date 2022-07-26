@@ -20,13 +20,11 @@ gallery.addEventListener('click', () => {
 
 // робимо модалку фыльму видимою
 function modalVisible() {
-  console.log('відкриття модалки');
   backdrop.classList.remove('hidden');
 }
 // вішаємо слухачів для закриття модалки
 function modalClose() {
   if (!backdrop.classList.contains('hidden')) {
-    console.log('вішаємо слухачів для закриття модалки');
     btnClose.addEventListener('click', closeModalBtn);
     document.addEventListener('keyup', closeModalEscape);
     document.addEventListener('click', closeModalClick);

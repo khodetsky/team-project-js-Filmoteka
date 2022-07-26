@@ -41,10 +41,11 @@ export function addModalMcp(movie) {
             <div class="modal__data--text">
               <p>${movie.overview}</p>
             </div>
-            <div class="modal__data--add">
+          </div>
+          <div class="modal__data--add">
               <button
               id ="addToWatched"
-                class="modal__btn btn__standart btn__standart--orange"
+                class="modal__btn btn__standart"
                 type="button"
               >
                 add to watched
@@ -53,6 +54,5 @@ export function addModalMcp(movie) {
                 add to queue
               </button>
             </div>
-          </div>
         </div>`;
 }

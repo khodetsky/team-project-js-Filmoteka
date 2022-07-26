@@ -123,14 +123,15 @@ function onGalleryClk(e) {
 
   // Add movie to local storage - used from modal windoow
   // addMovieToStorage('watched', movie);
+
   const btnToWatched = document.querySelector('#addToWatched');
   const btnToQueue = document.querySelector('#addToQueue');
 
   btnToWatched.addEventListener('click', () => {
-    addMovieToStorage('watched', movie, movie.id);
+    addMovieToStorage('watched', movie, movie.id, btnToWatched);
   });
   btnToQueue.addEventListener('click', () => {
-    addMovieToStorage('queue', movie, movie.id);
+    addMovieToStorage('queue', movie, movie.id, btnToQueue);
   });
 }
 
@@ -156,7 +157,7 @@ function onPgNumClk(e) {
   reDrawMovies(movies.rules, newPageNum, movies.search_string);
 }
 /*  Add movie to local storage - Used from Modal Window */
-function addMovieToStorage(storageKey, movie, movieId) {
+function addMovieToStorage(storageKey, movie, movieId, btn) {
   console.log(
     'addMovieToStorage started... storageKey: ',
     storageKey,
@@ -187,8 +188,8 @@ function addMovieToStorage(storageKey, movie, movieId) {
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
     );
-
-    // === | CHANGE Button Style to ACTIVE | ===
+    btn.classList.add('btn__standart--orange');
+    btn.textContent = `delete from ${storageKey}`;
   } else {
     let storageMovies = JSON.parse(
       localStorage.getItem(STORAGE_KEYS[storageKey])
@@ -202,6 +203,8 @@ function addMovieToStorage(storageKey, movie, movieId) {
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
     );
+    btn.classList.remove('btn__standart--orange');
+    btn.textContent = `add to ${storageKey}`;
   }
 }
 
