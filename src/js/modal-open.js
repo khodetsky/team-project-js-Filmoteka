@@ -7,16 +7,16 @@ import {
   backdrop,
 } from './modal-close';
 const gallery = document.querySelector('.gallery');
-
+const body = document.querySelector('body');
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
-gallery.addEventListener('click', (e) => {
+gallery.addEventListener('click', e => {
   if (e.target.closest('.card')) {
+    body.style.overflow = 'hidden';
     modalVisible();
     setTimeout(() => {
-    modalClose();
-  }, 100);
+      modalClose();
+    }, 100);
   }
-  
 });
 
 // робимо модалку фыльму видимою
