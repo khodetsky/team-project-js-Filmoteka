@@ -68,16 +68,18 @@ async function reDrawMovies(rules, pgNum, queryString) {
     return;
   }
   
-  // очистка кнопки фильтра при смене контента 
-  const currentCondition = JSON.parse(localStorage.getItem('movies')).rules;
-  if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
-    resetFilterBtn();
-  }
+  
   
   await localStorage.setItem(
     MOVIES_KEY,
     JSON.stringify({ ...movies, rules, search_string: queryString })
   );
+
+  // очистка кнопки фильтра при смене контента 
+  const currentCondition = JSON.parse(localStorage.getItem('movies')).rules;
+  if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
+    resetFilterBtn();
+  };
 
   await drawGallery(galleryRef, movies.results);
   await drawPagination(
