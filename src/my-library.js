@@ -45,7 +45,11 @@ function reDrawLocalMovies(rules, pgNum) {
   // Get movies Full List from needed Local Storage
   const movies = JSON.parse(localStorage.getItem(STORAGE_KEYS[rules]));
 
-  if (movies) {
+  if (!movies || !movies.total_results) {
+    paginationRef.classList.add('is-hidden');
+    drawEmptyGallery();
+    
+  } else {
     const localMovies = {
       page: pgNum,
       total_pages: movies.total_pages,
@@ -64,8 +68,6 @@ function reDrawLocalMovies(rules, pgNum) {
 
     paginationRef.addEventListener('click', onPgNumClk);
     galleryRef.addEventListener('click', onGalleryClk);
-  } else {
-    drawEmptyGallery();
   }
 
   window.scrollTo(0, 0);
@@ -110,6 +112,7 @@ function onGalleryClk(e) {
 
     const btnToWatched = document.querySelector('#addToWatched');
     const btnToQueue = document.querySelector('#addToQueue');
+
     btnStyle('watched', movie, movie.id, btnToWatched);
     btnStyle('queue', movie, movie.id, btnToQueue);
 
@@ -144,6 +147,7 @@ function onPgNumClk(e) {
 
   reDrawLocalMovies(localMovies.rules, newPageNum);
 }
+
 function addMovieToStorage(storageKey, movie, movieId, btn) {
   console.log(
     'addMovieToStorage started... storageKey: ',
@@ -186,14 +190,17 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
     );
     let movieIndex = storageMovies.results.indexOf(storageMovie);
     storageMovies.results.splice(movieIndex, 1);
+
     storageMovies.total_results -= 1;
     storageMovies.total_pages = Math.ceil(
       storageMovies.total_results / MOVIES_PER_PAGE
     );
+
     localStorage.setItem(
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
     );
+
     btn.classList.remove('btn__standart--orange');
     btn.textContent = `add to ${storageKey}`;
   }

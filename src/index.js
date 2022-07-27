@@ -142,6 +142,7 @@ function onGalleryClk(e) {
 
     const btnToWatched = document.querySelector('#addToWatched');
     const btnToQueue = document.querySelector('#addToQueue');
+
     btnStyle('watched', movie, movie.id, btnToWatched);
     btnStyle('queue', movie, movie.id, btnToQueue);
 
@@ -189,6 +190,7 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
     let storageMovies = JSON.parse(
       localStorage.getItem(STORAGE_KEYS[storageKey])
     );
+
     if (!storageMovies) {
       storageMovies = {
         results: [],
@@ -198,6 +200,7 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
     }
 
     storageMovies.results.push(movie);
+
     storageMovies.total_results += 1;
     storageMovies.total_pages = Math.ceil(
       storageMovies.total_results / MOVIES_PER_PAGE
@@ -207,6 +210,7 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
     );
+
     btn.classList.add('btn__standart--orange');
     btn.textContent = `delete from ${storageKey}`;
   } else {
@@ -217,7 +221,14 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
       movieLS => movieLS.id === movieId
     );
     let movieIndex = storageMovies.results.indexOf(storageMovie);
+
     storageMovies.results.splice(movieIndex, 1);
+
+    storageMovies.total_results -= 1;
+    storageMovies.total_pages = Math.ceil(
+      storageMovies.total_results / MOVIES_PER_PAGE
+    );
+
     localStorage.setItem(
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
