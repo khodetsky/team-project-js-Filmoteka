@@ -40,8 +40,8 @@
         display: flex;
     }
 
-    &__item+&__item {
-        margin-left: 40px;
+    &__item {
+        margin-right: 40px;
     }
 
     &__link {
@@ -67,7 +67,7 @@
             position: absolute;
             content: '';
             left: 0;
-            bottom: -3px;
+            top: calc(100% + 3px);
             display: block;
             width: 100%;
             height: 3px;
@@ -188,9 +188,126 @@
         &__form input {
             width: 394px;
         }
+        
+    }
+}
+
+.header__container--right-side {
+    display: flex;
+    // flex-direction: column-reverse;
+    // @media screen and (min-width: 1280px) {
+        align-items: center;
+    // }
+
+}
+
+.header__sign-in-btn {
+    height: 25px;
+    width: auto;
+    max-width: 100px;
+    padding: 0 5px 0 5px;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-radius: 5px;
+
+    background: none;
+    border: 1px solid #FFFFFF;;
+    
+    cursor: pointer;
+}
+
+.header__sign-out-btn {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    border: 1px solid #000;
+    background: none;
+    padding: 3px 10px;
+    border-radius: 5px;
+
+    color: #000;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color:#FFFFFF;
+        border-color: #FFFFFF;
+    }
+    @media screen and (min-width: 768px) {
+        font-size: 15px;
     }
 }
 
 
+.sign-in--button {
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        border: 0;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        margin: -1px;
+    }
+}
+
+.sign-in--icon-container {
+    fill: #FFFFFF;
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        border: 0;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        margin: -1px;
+    }
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        // fill: var(--accent-color);
+    }
+}
+
+.sign-in--button-container {
+    position: relative;
+}
+
+.user-info {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(161, 156, 156);
+
+    position: absolute;
+
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
+        right: -24px;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        right: 0;
+    }
+    
+}
 
 

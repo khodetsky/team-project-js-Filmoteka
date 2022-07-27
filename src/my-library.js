@@ -1,6 +1,7 @@
 import './js/changeThemeLibrary';
 // Основний файл сторінки My library. Сюди будуть імпортуватися окремі функції з ./js/my-library
 // Додавайте ці окремі файли саме у ту папку і експортуйте сюди.
+import './js/index/signInBtn';
 import './js/modal-close';
 import './js/modal-open';
 import './js/footer';

@@ -6,6 +6,7 @@ import './js/spinner';
 import './js/modal-close';
 import './js/modal-open';
 import './js/filter';
+import './js/index/signInBtn';
 
 import './js/footer';
 import './js/changeTheme';
@@ -32,6 +33,7 @@ const GET_MOVIES_RULES = {
   genres: 'genres',
   trends: 'trends',
   search: 'search',
+  filter: 'filter',
 };
 //
 const STORAGE_KEYS = {
@@ -65,7 +67,13 @@ async function reDrawMovies(rules, pgNum, queryString) {
     showErrorMsg();
     return;
   }
-
+  
+  // очистка кнопки фильтра при смене контента 
+  const currentCondition = JSON.parse(localStorage.getItem('movies')).rules;
+  if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
+    resetFilterBtn();
+  }
+  
   await localStorage.setItem(
     MOVIES_KEY,
     JSON.stringify({ ...movies, rules, search_string: queryString })
@@ -235,7 +243,10 @@ function btnStyle(storageKey, movie, movieId, btn) {
 const openDropBtn = document.querySelector('.filter__dropdown-button');
 const dropList = document.querySelector('.filter__dropdown-list');
 
-//    Клик по кнопке открыть/закрыть
+// Клик за пределами списка
+document.addEventListener('click', onDropListGenresBtnClick);
+
+// Клик по кнопке открыть/закрыть
 openDropBtn.addEventListener('click', function (e) {
   if (dropList.classList.contains('filter__visible')) {
     dropList.classList.remove('filter__visible');
@@ -253,9 +264,14 @@ function onDropListClick(e) {
 }
 
 // Клик за пределами списка закрывает список
-document.addEventListener('click', function (e) {
-  if (e.target !== document.querySelector('.filter__dropdown-button')) {
-    dropList.classList.remove('filter__visible');
-    openDropBtn.classList.remove('filter__dropdown-button-active');
-  }
-});
+function onDropListGenresBtnClick(e) {
+    if (e.target !== openDropBtn) {
+        dropList.classList.remove('filter__visible');
+        openDropBtn.classList.remove('filter__dropdown-button-active');
+    }
+}
+
+function resetFilterBtn() {
+    openDropBtn.textContent = 'Genres';
+}
+
