@@ -209,33 +209,37 @@
     justify-content: center;
     align-items: center;
 
-    // text-transform: uppercase;
-    font-size: 18px;
+    text-transform: uppercase;
+    font-size: 14px;
     color: #FFFFFF;
-    outline: none;
     border-radius: 5px;
 
-    background: var(--accent-color);
-    border: none;
+    background: none;
+    border: 1px solid #FFFFFF;;
     
-
     cursor: pointer;
 }
 
 .header__sign-out-btn {
+    font-size: 12px;
+    font-weight: 500;
     margin-top: 5px;
-    border: none;
-    background: var(--accent-color);
+    border: 1px solid #000;
+    background: none;
     padding: 3px 10px;
     border-radius: 5px;
 
-    color: #FFFFFF;
+    color: #000;
 
     cursor: pointer;
 
     &:hover,
     &:focus {
-        color:black;
+        color:#FFFFFF;
+        border-color: #FFFFFF;
+    }
+    @media screen and (min-width: 768px) {
+        font-size: 15px;
     }
 }
 

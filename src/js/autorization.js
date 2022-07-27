@@ -1,14 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import { doc, getDoc } from "firebase/firestore";
 
 import Notiflix from 'notiflix';
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyD606fLTGqofK4cSdWdTzIn8ZRRAFlLyLU",
@@ -23,104 +20,68 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// const auth = getAuth(app);
 
 let userId = "";
 let userEmail = "";
 
 const searchForm = document.querySelector('.search-form');
-const vhodBtn = document.querySelector('.voiti');
-const registrBtn = document.querySelector('.registr');
+const enterBtn = document.querySelector('.enterBtn');
+const registrationBtn = document.querySelector('.registrationBtn');
 const inputEmail = document.querySelector('.inputEmail');
 const inputPassword = document.querySelector('.inputPassword');
-const enterBtn = document.querySelector('.enterBtn');
-const closeModal = document.querySelector('.autorization-backdrop');
+const autorizationBackdrop = document.querySelector('.autorization-backdrop');
+const signInButton = document.querySelector('.header__sign-in-btn');
+const userEmailFill = document.querySelector('#user-email');
+const iconContainer = document.querySelector('.sign-in--icon-container');
 
-// const vihodBtn = document.querySelector('.vihod');
-// const glavnaPage = document.querySelector('.glavna');
-// const readWatchedBtn = document.querySelector('#watched');
-// const readQueueBtn = document.querySelector('#queue');
+const STORAGE_KEYS = {
+  watched: 'watchedAll',
+  queue: 'queueAll',
+};
 
-// const addWatchedBtn = document.querySelector('#addToWatched');
-// const addQueueBtn = document.querySelector('#addToQueue');
-
-
-// readWatchedBtn.addEventListener('click', onReadWatchedCollection);
-// readQueueBtn.addEventListener('click', onReadQueueCollection);
-
-// addWatchedBtn.addEventListener('click', onAddWatchedCollection);
-// addQueueBtn.addEventListener('click', onAddQueueCollection);
-
-registrBtn.addEventListener('click', onRegistrationUser);
-vhodBtn.addEventListener('click', onLoginUser);
-enterBtn.addEventListener('click', onLogoutUser);
-// enterBtn.addEventListener('click', )
-// vihodBtn.addEventListener('click', onLogoutUser);
+registrationBtn.addEventListener('click', onRegistrationUser);
+enterBtn.addEventListener('click', onLoginUser);
 
 onCheckingUser();
 
-// import { doc, setDoc } from "firebase/firestore"; 
-
-// // Add a new document in collection "cities"
-// await setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {movie});
-
-
-
-//  export function onAddQueueCollection(movie) {
-//     addDoc(collection(db, `${userEmail}, QUEUE: ${userId}`), movie);
-// }
-
-function onAddWatchedCollection(movie) {
-    addDoc(collection(db, `${userEmail}, WATCHED: ${userId}`), movie);
+async function onReadWatchedCollection() {
+    const docRef = doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED");
+    const docSnap = await getDoc(docRef);
+    console.log(docSnap.data());
+    if (docSnap.exists()) {
+        localStorage.setItem(STORAGE_KEYS.watched, JSON.stringify(docSnap.data().movieWatched));
+    } else {
+        console.log("No such document!")
+    }
 }
 
-
-
-
-
-
-export async function onReadQueueCollection() {
+async function onReadQueueCollection() {
     const docRef = doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE");
     const docSnap = await getDoc(docRef);
-    console.log("Document data:", docSnap);
-    // const querySnapshot = await getDocs(collection(db, `${userEmail}, QUEUE: ${userId}`));
-    // docSnap.forEach((doc) => {
-    //     if (doc) {
-    //         console.log(doc.data());
-    //         // const movieQueue = localStorage.setItem(STORAGE_KEYS.queue, doc.data());
-    //         // const movieWatched = JSON.parse(localStorage.getItem(STORAGE_KEYS.watched));
-    //         // setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {movieQueue});
-    //         // setDoc(doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED"), { movieWatched });
-    //     } else {
-    //         console.log("БАЗА ДАННЫХ ПУСТАЯ!");
-    //     }
-    // });
-//     if (docSnap.exists()) {
-//         console.log("Document data:", docSnap.data());
-//     } else {
-//   // doc.data() will be undefined in this case
-//   console.log("No such document!");
-// }
+    console.log(docSnap.data().movieQueue);
+    if (docSnap.exists()) {
+        localStorage.setItem(STORAGE_KEYS.queue, JSON.stringify(docSnap.data().movieQueue));
+    } else {
+        console.log("No such document!")
+    }
 }
-
-
 
 export async function onCheckingUser() {
     const auth = getAuth(app);
-await onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    userId = uid;
-    userEmail = user.email;
-            closeModal.classList.add('is-hidden');
-      
-    // glavnaPage.style.display = "block";
-    // searchForm.style.display = "none";
-  } else {
-    // glavnaPage.style.display = "none";
-    // searchForm.style.display = "flex";
-  }
-});
+    await onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        userId = uid;
+          userEmail = user.email;
+          
+        signInButton.textContent = "Logged";
+        userEmailFill.textContent = `${userEmail}`;
+        iconContainer.classList.add('if-user-entered')
+        iconContainer.innerHTML = "";
+        iconContainer.insertAdjacentHTML('beforeend', `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.84 14.31c-.295.522-.517 1.09-.659 1.69h-9.181v-.417c-.004-1.112.044-1.747 1.324-2.043 1.402-.324 2.787-.613 2.121-1.841-1.972-3.637-.562-5.699 1.555-5.699 2.077 0 3.521 1.985 1.556 5.699-.647 1.22.688 1.51 2.121 1.841.672.155 1 .407 1.163.77zm-.815 3.69h-11.025v-14h20v7.5c.749.312 1.424.763 2 1.316v-10.816h-24v18h13.5c-.26-.623-.421-1.296-.475-2zm6.975-9h-4v2h4v-2zm-4-1h4v-2h-4v2zm3.5 5c-2.486 0-4.5 2.015-4.5 4.5s2.014 4.5 4.5 4.5c2.484 0 4.5-2.015 4.5-4.5s-2.016-4.5-4.5-4.5zm-.469 6.484l-1.688-1.637.695-.697.992.94 2.115-2.169.697.696-2.811 2.867z"/></svg>`);
+      } else {
+      }
+    });
 }
 
 
@@ -141,19 +102,14 @@ async function onRegistrationUser() {
     .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
-            console.log(user);
             userId = user.uid;
             userEmail = user.email;
-            console.log(userId);
-            console.log(userEmail);
+            autorizationBackdrop.classList.add('is-hidden');
             setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {});
             setDoc(doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED"), {});
-            // addDoc(collection(db, `${userEmail}, WATCHED: ${userId}`), {});
-            // addDoc(collection(db, `${userEmail}, QUEUE: ${userId}`), {});
 
             Notiflix.Notify.success('Регистрация прошла успешно! Добро пожаловать на сайт');
             searchForm.reset();
-            closeModal.classList.add('is-hidden');
         }
     })
     .catch((error) => {
@@ -185,39 +141,16 @@ async function onLoginUser() {
     .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
-            console.log(user);
             userId = user.uid;
             userEmail = user.email;
-            console.log(userId);
-            console.log(userEmail);
 
-            glavnaPage.style.display = "block";
-            searchForm.style.display = "none";
             Notiflix.Notify.info('Добро пожаловать на сайт');
             searchForm.reset();
-            closeModal.classList.add('is-hidden');
+            autorizationBackdrop.classList.add('is-hidden');
+            userEmailFill.textContent = `${userEmail}`;
             
-
-            const movieQueue = JSON.parse(localStorage.getItem(STORAGE_KEYS.queue).results);
-            const movieWatched = JSON.parse(localStorage.getItem(STORAGE_KEYS.watched));
-            setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {movieQueue});
-            setDoc(doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED"), { movieWatched });
             onReadQueueCollection();
-
-
-            async function onReadWatchedCollection() {
-                const querySnapshot = await getDocs(collection(db, `${userEmail}, WATCHED: ${userId}`));
-                querySnapshot.forEach((doc) => {
-                if (doc) {
-                    function watchedFromBase() {
-                    localStorage.setItem('watched',  doc.data())
-                }
-                    // console.log(doc.data());
-                } else {
-                    console.log("БАЗА ДАННЫХ ПУСТАЯ!");
-                }
-                });
-            }
+            onReadWatchedCollection();
         }
     })
     .catch((error) => {
@@ -233,61 +166,17 @@ async function onLoginUser() {
     });
 }
 
-
-const STORAGE_KEYS = {
-  watched: 'watchedAll',
-  queue: 'queueAll',
-};
-
-function onLogoutUser() {
+export function onLogoutUser() {
     const auth = getAuth(app);
     signOut(auth).then(() => {
-        // glavnaPage.style.display = "none";
-        // searchForm.style.display = "flex";
         const movieQueue = JSON.parse(localStorage.getItem(STORAGE_KEYS.queue));
         const movieWatched = JSON.parse(localStorage.getItem(STORAGE_KEYS.watched));
         setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {movieQueue});
         setDoc(doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED"), { movieWatched });
-        // closeModal.classList.add('is-hidden');
+        localStorage.removeItem(STORAGE_KEYS.queue);
+        localStorage.removeItem(STORAGE_KEYS.watched);
 
     }).catch((error) => {
         console.log(error);
     });
 }
-
-
-const films = {
-    first: "Alan",
-    middle: "Mathison",
-    last: "Turing",
-    born: 1912,
-}
-
-
-
-
-// Функция которая создает и колекцию и документ в ней.
-// const film = {
-//     name: "Maloy",
-//     state: "CA",
-//     country: "USAA",
-// }
-
-// setDoc(doc(db, "films", "Maloy"), film);
-
-// Функция чтобы записать объект в колекцию фильмов + Cloud Firestore автоматически сгенерировать идентификатор для вас
-// addDoc(collection(db, "prosmotr"), {
-//     first: "Alan",
-//     middle: "Mathison",
-//     last: "Turing",
-//     born: 1912
-//   });
-
-
-// Асинхронная функциия для чтения (доступа) к колекции фильмов
-// async function proba() {
-//     const querySnapshot = await getDocs(collection(db, "films"));
-//     querySnapshot.forEach((doc) => {
-//     console.log(`Ключ к документу в колекции: ${doc.id}`, doc.data());
-// });
-// }
