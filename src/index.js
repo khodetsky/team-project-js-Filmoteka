@@ -71,7 +71,8 @@ async function reDrawMovies(rules, pgNum, queryString) {
   if (await isNoMovies(movies)) {
     showErrorMsg();
     formRef.reset();
-    // inputSearch.value = '';
+    galleryRef.innerHTML = '<h1 style="margin-left: auto; margin-right: auto;">The search result did not return any results</h1>';
+    paginationRef.style.display = 'none';
     return;
   }
   

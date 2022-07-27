@@ -75,7 +75,9 @@ function reDrawLocalMovies(rules, pgNum) {
 }
 
 function drawEmptyGallery() {
+
   galleryRef.innerHTML = '<h1>Your Library is <span style="color: #FF001B;">empty</span>. Please <span style="color: #FF001B;">add</span> a movie from the home page</h1>';
+
   pageNumRef.innerHTML = '';
 }
 
