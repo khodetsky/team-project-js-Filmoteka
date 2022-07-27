@@ -90,11 +90,11 @@ async function onRegistrationUser() {
     let password = inputPassword.value;
 
     if (email === "" && password === "") {
-        Notiflix.Notify.failure('Введите Email и Password!');
+        Notiflix.Notify.failure('Fulfill your email and password!');
     } else if (email !== "" && password === "") {
-        Notiflix.Notify.failure('Введите Password!');
+        Notiflix.Notify.failure('Fulfill Password field!');
     } else if (email === "" && password !== "") {
-        Notiflix.Notify.failure('Введите Email!');
+        Notiflix.Notify.failure('Fulfill Email field!');
     }
     
     const auth = getAuth(app);
@@ -108,7 +108,7 @@ async function onRegistrationUser() {
             setDoc(doc(db, `${userEmail}, QUEUE: ${userId}`, "QUEUE"), {});
             setDoc(doc(db, `${userEmail}, WATCHED: ${userId}`, "WATCHED"), {});
 
-            Notiflix.Notify.success('Регистрация прошла успешно! Добро пожаловать на сайт');
+            Notiflix.Notify.success('Registration successful! Welcome to Filmoteka!');
             searchForm.reset();
         }
     })
@@ -118,7 +118,7 @@ async function onRegistrationUser() {
         console.log(errorCode);
         console.log(errorMessage);
         if (errorCode === 'auth/email-already-in-use') {
-            Notiflix.Notify.warning('Пользователь уже зарегестрирован, войдите на сайт!');
+            Notiflix.Notify.warning('User already exists, please sing in!');
         }
     });
 }
@@ -129,11 +129,11 @@ async function onLoginUser() {
     let password = inputPassword.value;
 
     if (email === "" && password === "") {
-        Notiflix.Notify.failure('Введите Email и Password!');
+        Notiflix.Notify.failure('Fulfill your email and password!');
     } else if (email !== "" && password === "") {
-        Notiflix.Notify.failure('Введите Password!');
+        Notiflix.Notify.failure('Fulfill Password field!');
     } else if (email === "" && password !== "") {
-        Notiflix.Notify.failure('Введите Email!');
+        Notiflix.Notify.failure('Fulfill Email field!');
     }
     
     const auth = getAuth(app);
@@ -144,7 +144,7 @@ async function onLoginUser() {
             userId = user.uid;
             userEmail = user.email;
 
-            Notiflix.Notify.info('Добро пожаловать на сайт');
+            Notiflix.Notify.info('Welcome to Filmoteka!');
             searchForm.reset();
             autorizationBackdrop.classList.add('is-hidden');
             userEmailFill.textContent = `${userEmail}`;
@@ -159,9 +159,9 @@ async function onLoginUser() {
         console.log(errorCode);
         console.log(errorMessage);
         if (errorCode === 'auth/user-not-found') {
-            Notiflix.Notify.failure('Пользователь не найден, загерестрируйтесь или проверьте Email!');
+            Notiflix.Notify.failure('User not found, register or check your Email!');
         } else if (errorCode === 'auth/wrong-password') {
-            Notiflix.Notify.failure('Неверный пароль, попробуйте ещё раз');
+            Notiflix.Notify.failure('Wrong Password, try again!');
         }
     });
 }
