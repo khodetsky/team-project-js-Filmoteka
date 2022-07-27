@@ -1,3 +1,6 @@
+// import { drawGallery } from './drawGallery';
+
+// const galleryRef = document.querySelector('.gallery');
 const btnClose = document.querySelector('.modal__btn--close');
 const modal = document.querySelector('.modal');
 const backdrop = document.querySelector('.backdrop');
@@ -9,6 +12,9 @@ function modalHidden() {
   body.style.overflow = '';
   removeListener();
   modalMcpContainer.innerHTML = '';
+  console.log();
+  
+  // drawGallery(galleryRef, localStorage.setItem(LOCAL_MOVIES_KEY, JSON.stringify(localMovies.results)));
 }
 // закриття модалки кнопкою
 function closeModalBtn() {
