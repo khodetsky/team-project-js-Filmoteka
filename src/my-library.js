@@ -186,6 +186,10 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
     );
     let movieIndex = storageMovies.results.indexOf(storageMovie);
     storageMovies.results.splice(movieIndex, 1);
+    storageMovies.total_results -= 1;
+    storageMovies.total_pages = Math.ceil(
+      storageMovies.total_results / MOVIES_PER_PAGE
+    );
     localStorage.setItem(
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
@@ -208,11 +212,8 @@ function isMovieInStorage(storageKey, movieId) {
 
 function btnStyle(storageKey, movie, movieId, btn) {
   if (isMovieInStorage(storageKey, movie.id)) {
-    console.log('фильм добавлен в ls');
     btn.classList.add('btn__standart--orange');
     btn.textContent = `delete from ${storageKey}`;
-  } else {
-    console.log('фильм не добавлен в LS');
   }
 }
 

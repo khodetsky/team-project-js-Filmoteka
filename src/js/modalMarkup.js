@@ -4,7 +4,7 @@ import { IMG_BASE_URL, IMG_FILE_SIZE } from './basedConst';
 export function addModalMcp(movie) {
   return `
         <div class="modal__data--poster">
-          <img src="${IMG_BASE_URL}${IMG_FILE_SIZE}${
+          <img id='modal-img' src="${IMG_BASE_URL}${IMG_FILE_SIZE}${
     movie.poster_path
   }" alt="film" />
         </div>
@@ -36,7 +36,7 @@ export function addModalMcp(movie) {
               <td>${createListOfGenres(movie.genre_ids)}</td>
             </tr>
           </table>
-          <div>
+          <div class="modal__data--about">
             <h2 class="modal__data--title--about">about</h2>
             <div class="modal__data--text">
               <p>${movie.overview}</p>
