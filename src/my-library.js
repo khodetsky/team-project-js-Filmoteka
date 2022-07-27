@@ -196,6 +196,10 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
     );
     btn.classList.remove('btn__standart--orange');
     btn.textContent = `add to ${storageKey}`;
+
+    localStorage.setItem(LOCAL_MOVIES_KEY, JSON.stringify(storageMovies));
+    drawGallery(galleryRef, storageMovies.results);
+
   }
 }
 
