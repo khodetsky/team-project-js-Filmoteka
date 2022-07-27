@@ -70,10 +70,6 @@ header {
 
 .header__link--noCurrent {
     border-radius: 3px;
-    &:hover {
-        box-shadow: 0 0 10px 5px #ff6b08;
-        transition: box-shadow 0.25s linear;
-    }
 }
 
 .header__sign-in-btn {
