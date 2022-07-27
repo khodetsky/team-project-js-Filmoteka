@@ -18,6 +18,7 @@ import { calcNewPgNum } from './js/calcNewPgNum';
 import { showErrorMsg, hideErrorMsg } from './js/errorMessage';
 import { target, spinner } from './js/spinner.js';
 import { addModalMcp } from './js/modalMarkup';
+import { doc } from 'firebase/firestore';
 
 const galleryRef = document.querySelector('.gallery');
 const paginationRef = document.querySelector('#pagination');
@@ -26,6 +27,7 @@ const formRef = document.querySelector('.form');
 const modalMcpContainer = document.querySelector('.modal__data--content');
 const openDropBtn = document.querySelector('.filter__dropdown-button');
 const dropList = document.querySelector('.filter__dropdown-list');
+// const inputSearch = document.querySelector('#input');
 
 
 const MOVIES_PER_PAGE = 20;
@@ -69,6 +71,7 @@ async function reDrawMovies(rules, pgNum, queryString) {
   if (await isNoMovies(movies)) {
     showErrorMsg();
     formRef.reset();
+    // inputSearch.value = '';
     return;
   }
   
@@ -117,6 +120,7 @@ function onFormSubmit(e) {
   }
 
   reDrawMovies(GET_MOVIES_RULES.search, 1, searchString);
+  formRef.reset();
   setTimeout(() => spinner.stop(), 400);
 }
 /* = */
