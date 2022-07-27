@@ -73,7 +73,7 @@ function reDrawLocalMovies(rules, pgNum) {
 }
 
 function drawEmptyGallery() {
-  galleryRef.innerHTML = '<h1>EMPTY gallery</h1>';
+  galleryRef.innerHTML = '<h1 style="margin-left: auto; margin-right: auto;">Нour gallery is empty, please add a movie to the gallery</h1>';
   pageNumRef.innerHTML = '';
 }
 

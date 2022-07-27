@@ -67,6 +67,7 @@ async function reDrawMovies(rules, pgNum, queryString) {
 
   const movies = await getMovies(rules, pgNum, queryString);
   if (await isNoMovies(movies)) {
+    formRef.reset();
     showErrorMsg();
     return;
   }
