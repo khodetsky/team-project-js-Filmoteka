@@ -24,6 +24,9 @@ const paginationRef = document.querySelector('#pagination');
 const pageNumRef = document.querySelector('#page-numbers');
 const formRef = document.querySelector('.form');
 const modalMcpContainer = document.querySelector('.modal__data--content');
+const openDropBtn = document.querySelector('.filter__dropdown-button');
+const dropList = document.querySelector('.filter__dropdown-list');
+
 
 const MOVIES_PER_PAGE = 20;
 //
@@ -68,18 +71,21 @@ async function reDrawMovies(rules, pgNum, queryString) {
     return;
   }
   
-  
-  
+// очистка кнопки фильтра при смене контента 
+  const currentMovies = localStorage.getItem(MOVIES_KEY);
+
+  if (currentMovies) {
+    const currentCondition = JSON.parse(currentMovies).rules;
+
+    if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
+      resetFilterBtn();
+    };
+  };
+
   await localStorage.setItem(
     MOVIES_KEY,
     JSON.stringify({ ...movies, rules, search_string: queryString })
   );
-
-  // очистка кнопки фильтра при смене контента 
-  const currentCondition = JSON.parse(localStorage.getItem('movies')).rules;
-  if ( (currentCondition !== rules) && (rules !== GET_MOVIES_RULES.filter) ) {
-    resetFilterBtn();
-  };
 
   await drawGallery(galleryRef, movies.results);
   await drawPagination(
@@ -242,9 +248,6 @@ function btnStyle(storageKey, movie, movieId, btn) {
 
 // ----------------------------------------------------
 
-const openDropBtn = document.querySelector('.filter__dropdown-button');
-const dropList = document.querySelector('.filter__dropdown-list');
-
 // Клик за пределами списка
 document.addEventListener('click', onDropListGenresBtnClick);
 
@@ -253,15 +256,13 @@ openDropBtn.addEventListener('click', function (e) {
   if (dropList.classList.contains('filter__visible')) {
     dropList.classList.remove('filter__visible');
   } else {
-    openDropBtn.innerText = this.innerText;
-    openDropBtn.focus();
-    dropList.classList.remove('filter__visible');
     dropList.classList.add('filter__visible');
     dropList.addEventListener('click', onDropListClick);
   }
 });
 
 function onDropListClick(e) {
+  openDropBtn.textContent = e.target.innerText;
   reDrawMovies('filter', 1, e.target.dataset.value);
 }
 
@@ -276,4 +277,3 @@ function onDropListGenresBtnClick(e) {
 function resetFilterBtn() {
     openDropBtn.textContent = 'Genres';
 }
-
