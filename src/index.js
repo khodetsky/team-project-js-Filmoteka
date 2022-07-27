@@ -206,6 +206,7 @@ function addMovieToStorage(storageKey, movie, movieId, btn) {
       STORAGE_KEYS[storageKey],
       JSON.stringify(storageMovies)
     );
+
     btn.classList.remove('btn__standart--orange');
     btn.textContent = `add to ${storageKey}`;
   }
@@ -224,11 +225,8 @@ function isMovieInStorage(storageKey, movieId) {
 
 function btnStyle(storageKey, movie, movieId, btn) {
   if (isMovieInStorage(storageKey, movie.id)) {
-    console.log('фильм добавлен в ls');
     btn.classList.add('btn__standart--orange');
     btn.textContent = `delete from ${storageKey}`;
-  } else {
-    console.log('фильм не добавлен в LS');
   }
 }
 
@@ -239,20 +237,19 @@ const dropList = document.querySelector('.filter__dropdown-list');
 
 //    Клик по кнопке открыть/закрыть
 openDropBtn.addEventListener('click', function (e) {
-    
-    if (dropList.classList.contains('filter__visible')) {
-        dropList.classList.remove('filter__visible');
-    } else {
-        openDropBtn.innerText = this.innerText;
-        openDropBtn.focus();
-        dropList.classList.remove('filter__visible');
-        dropList.classList.add('filter__visible');
-        dropList.addEventListener('click', onDropListClick);
-    }
+  if (dropList.classList.contains('filter__visible')) {
+    dropList.classList.remove('filter__visible');
+  } else {
+    openDropBtn.innerText = this.innerText;
+    openDropBtn.focus();
+    dropList.classList.remove('filter__visible');
+    dropList.classList.add('filter__visible');
+    dropList.addEventListener('click', onDropListClick);
+  }
 });
 
 function onDropListClick(e) {
-    reDrawMovies('filter', 1, e.target.dataset.value);
+  reDrawMovies('filter', 1, e.target.dataset.value);
 }
 
 // Клик за пределами списка закрывает список
@@ -262,4 +259,3 @@ document.addEventListener('click', function (e) {
     openDropBtn.classList.remove('filter__dropdown-button-active');
   }
 });
-

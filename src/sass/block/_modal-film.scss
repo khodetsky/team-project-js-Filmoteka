@@ -67,19 +67,18 @@
 
 .modal {
   max-width: 280px;
-  max-height: calc(100% - 40px);
+  max-height: calc(100% - 20px);
   width: 100%;
-   overflow: auto;
+   overflow: scroll;
   // pointer-events: none;
   
 
   @media screen and (min-width: 768px) {
+    overflow: visible;
     max-width: 704px;
-    // min-height: 552px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     max-width: 806px;
-    // min-height: 558px;
   }
   // overflow: hidden;
   // z-index: -100;
@@ -107,20 +106,21 @@
       justify-content: center;
       padding-right: 72px;
       padding-left: 36px;
+      padding-bottom: 25px;
+      padding-top: 35px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       padding-left: 12px;
       padding-right: 12px;
     }
 
     &--poster {
       margin: 15px 0 20px 0;
-      border-radius: 5px;
       @media screen and (min-width: 768px) {
         width: 40%;
         margin: 0 68px 0 0;
       }
-      @media screen and (min-width: 1200px) {
+      @media screen and (min-width: 1280px) {
         margin: 0 16px 0 0;
       }
     }
@@ -130,13 +130,19 @@
         width: 60%;
       }
     }
+    &--about {
+      margin-bottom: 20px;
+      // @media screen and (min-width: 768px) {
+      //   margin-bottom: 70px;
+      // }
+    }
     &--title {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
       line-height: 23px;
       text-transform: uppercase;
-      @media screen and (min-width: 1200px) {
+      @media screen and (min-width: 1280px) {
         font-size: 30px;
         line-height: 35px;
       }
@@ -166,7 +172,6 @@
     &--text {
       max-height: 236px;
       overflow: auto;
-      margin-bottom: 20px;
       @media screen and (min-width: 1280px) {
         max-height: 160px;
       }
@@ -174,10 +179,12 @@
     &--add {
       display: flex;
       justify-content: center;
-      @media screen and (min-width: 1280px) {
+      @media screen and (min-width: 768px) {
         justify-content: start;
-        padding-left: 8px;
+      // position: absolute;
+      // bottom: 0;
       }
+      
     }
     &--element {
       min-width: 36px;
@@ -230,6 +237,12 @@
         margin-right: 15px;
       }
     }
+
+    #modal-img {
+      border-radius: 5px;
+    }
+
+    
 
     
 
